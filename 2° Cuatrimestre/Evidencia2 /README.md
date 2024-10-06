@@ -34,8 +34,7 @@ en Python (archivos de texto y binarios).</h3>
   </ul>
 </details>
 
-br/
-br/
+<hr/>
 
 <!-- INTEGRANTES -->
 
