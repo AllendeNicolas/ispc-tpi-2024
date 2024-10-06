@@ -183,13 +183,16 @@ CREATE TABLE IF NOT EXISTS `data_human´s`.`postulante_has_postulante` (
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 -- Crear la tabla puestodeseado
-CREATE TABLE IF NOT EXISTS `data_human´s`.`puestodeseado` (
-  `Titulopuesto` VARCHAR(45) NOT NULL,
-  `Rubro` VARCHAR(100) NOT NULL,
-  `Experiencia` VARCHAR(300) NOT NULL,
-  `Disponibilidadhoraria` VARCHAR(100) NOT NULL,
-  `Id_puestodeseado` VARCHAR(45) NOT NULL,
-  `Id_postulante` VARCHAR
+CREATE TABLE `puestodeseado` (
+  `id_puestodeseado` int NOT NULL,
+  `id_postulante` int NOT NULL,
+  `Titulopuesto` varchar(45) NOT NULL,
+  `Rubro` varchar(45) NOT NULL,
+  `Experiencia` varchar(200) NOT NULL,
+  `Disponibilidadhoraria` varchar(200) NOT NULL,
+  PRIMARY KEY (`id_puestodeseado`),
+  UNIQUE KEY `id_puestodeseado_UNIQUE` (`id_puestodeseado`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Crear la tabla registro_usuarios
 CREATE TABLE `usuarios` (
