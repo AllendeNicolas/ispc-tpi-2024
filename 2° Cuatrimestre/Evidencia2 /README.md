@@ -11,8 +11,7 @@ en Python (archivos de texto y binarios).</h3>
      Proyecto: DATA  HUMAN´S
     <br />
     VER ÍNDICE MÁS ABAJO
-    <br />
-    <br />
+    
   </p>
 </div>
 
@@ -28,7 +27,8 @@ en Python (archivos de texto y binarios).</h3>
         <li><a href="#descripcionPI">Programación I</a></li>
         <li><a href="#descripcionBDII">Base de Datos II</a></li>
         <li><a href="#descripcionreadme"> A cerca de esta evidencia</a></li>
-        <li><a href="#descripcionejecucion">Para ejecutar el Programa</a></li>
+        <li><a href="#descripcionejecucion"> Requisitos del Programa</a></li>
+        <li><a href="#descripcioneaplicacion">Para ejecutar el Programa</a></li>
      </ul>
      </li>
   </ul>
@@ -55,7 +55,6 @@ Carlos Direni - 28.117.281 - direnicarlos@gmail.com - https://github.com/Cdireni
 <h4 id='descripcionPI'><strong>PROGRAMACION I</strong></h4>
 
 <hr/>
-<h3> Evidencia 2</h3>
 
 <p>En el repositorio, específicamente dentro de la carpeta 2° Cuatrimestre, la carpeta Evidencia 1, que contiene un sub-archivo denominado app, con lo solicitado para cumplir los requisitos de la Evidencia 2, del módulo de Innovación y gestión de Base de Datos. En ella se encuentran: <p/>
 
@@ -78,9 +77,15 @@ El otro inconveniente, fue ponernos de acuerdo, con los nombres de las funciones
 
 <hr/> 
 
-<h4 id='descripcionejecucion'><strong> Para ejecutar el programa</strong></h4>
+<h4 id='descripcionejecucion'><strong> Requisitos del programa</strong></h4>
 
 <p>Para ejecutar el Programa, es necesario tener descargada la Librería PANDAS, que fue la Librería seleccionada, para la creación de los objetos en Python. (la misma se instala de la siguiente manera: En <strong>Visual Studio Code</strong>, ya  en el archivo Python a desarrollar o ejecutar, abrimos la <strong>Terminal</strong> dedicada, e ingresamos la siguiente línea de código… <strong>"pip install pandas"<strong/> y damos <strong>Enter</strong>,  Python realizará la descarga e instalación de la librería automáticamente, y estará lista para ser utilizada)</p>
+
+<hr/>
+
+<h4 id='descripcionaplicacion'><strong> Ejecución del programa</strong></h4>
+
+<p> Para Ejecutar la aplicación debemos seguir los siguientes pasos:</p>
 
 <hr/> 
 <h3> Link Evidencia 2</h3>
