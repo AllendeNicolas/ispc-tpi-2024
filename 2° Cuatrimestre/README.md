@@ -63,6 +63,9 @@ Además podrá encontrar lo solicitado por Base de Datos II, el documento estruc
 <h3> Link Evidencia 1</h3>
 <p align="center"><a href="https://github.com/AllendeNicolas/ispc-tpi-2024/tree/main/2%C2%B0%20Cuatrimestre/Evidencia1"><strong>Ver Evidencia 1 »</strong></a></p>
 
+<h3> Link Evidencia 2</h3>
+<p align="center"><a href="https://github.com/AllendeNicolas/ispc-tpi-2024/tree/main/2%C2%B0%20Cuatrimestre/Evidencia2%20"><strong>Ver Evidencia 1 »</strong></a></p>
+
 <hr/>
 
 <h3 align="center" id="docbbdd">Documento Base de Datos</h3>
