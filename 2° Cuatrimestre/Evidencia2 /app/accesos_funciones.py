@@ -39,9 +39,9 @@ def control_acceso(username, password):
         print("Acceso denegado")
         registrar_intento_fallido(username, password)
 
-# Pruebas de uso de aplicación
+'''# Pruebas de uso de aplicación
 if __name__ == "__main__":
     # Datos de ingreso del usuario
     username = input("Ingrese su nombre de usuario: ")
     password = input("Ingrese su contraseña: ")
-    control_acceso(username, password)
+    control_acceso(username, password)'''
