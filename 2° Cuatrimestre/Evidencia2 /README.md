@@ -69,16 +69,20 @@ Carlos Direni - 28.117.281 - direnicarlos@gmail.com - https://github.com/Cdireni
 
 <h4 id='descripcionreadme'><strong> A cerca de esta evidencia</strong></h4>
 
-<p>Dada la complejidad de los nuevos contenidos en la materia de Programación I, en cuanto a programación orientada a objetos con lenguaje Python, y teniendo en cuenta que la gran mayoría de nuestros integrantes, no hemos tenido contacto anteriormente con este tipo de contenido. Para esta evidencia, tuvimos que realizar una división de tareas extrema, diseñamos una guía de tareas a realizar, analizando el problema general, y dividiéndolo en sub problemas, más pequeños. A cada integrante se le asigno una pequeña porción  de la consigna que debió desarrollar a criterio propio, y con sus propios recursos, partiendo de la base de la creación de  las CLASES, solicitadas en Python. 
-La complejidad del proyecto estuvo presente en todo momento, por una cuestión de que cada integrante, trabajo de forma independiente, casi sin poder consultar a los demás, por no poder coincidir en cuanto a horarios.
-El otro inconveniente, fue ponernos de acuerdo, con los nombres de las funciones o módulos que cada integrante efectuó, y que hicieron difícil la puesta a punto en general del proyecto. Por tener maneras de resolver y de codear, totalmente diferentes, algunos por la falta de experiencia y otros por tener conocimientos en el uso de Python.
+<p>Dada la complejidad de los nuevos contenidos en la materia de Programación I, en cuanto a programación orientada a objetos con lenguaje Python, y teniendo en cuenta que la gran mayoría de nuestros integrantes, no hemos tenido contacto anteriormente con este tipo de contenido. Para esta evidencia, tuvimos que realizar una división de tareas extrema, diseñamos una guía de tareas a realizar, analizando el problema general, y dividiéndolo en sub problemas, más pequeños. A cada integrante se le asignó una pequeña porción  de la consigna que debió desarrollar a criterio propio, y con sus propios recursos, partiendo de la base de la creación de  las CLASES, solicitadas en Python. 
+La complejidad del proyecto estuvo presente en todo momento, por una cuestión de que cada integrante, trabajó de forma independiente, casi sin poder consultar a los demás integrantes, por no poder coincidir en cuanto a horarios.
+El otro inconveniente, fue ponernos de acuerdo, con los nombres de las funciones o módulos que cada integrante desarrolló, y que hicieron difícil la puesta a punto en general del proyecto. Por tener maneras de resolver y de codear, totalmente diferentes, algunos por la falta de experiencia y otros por tener conocimientos en el uso de Python.
 </p>
 
 <hr/> 
 
 <h4 id='descripcionejecucion'><strong> Requisitos del programa</strong></h4>
 
-<p>Para ejecutar el Programa, es necesario tener descargada la Librería PANDAS, que fue la Librería seleccionada, para la creación de los objetos en Python. (la misma se instala de la siguiente manera: En <strong>Visual Studio Code</strong>, ya  en el archivo Python a desarrollar o ejecutar, abrimos la <strong>Terminal</strong> dedicada, e ingresamos la siguiente línea de código… <strong>"pip install pandas"<strong/> y damos <strong>Enter</strong>,  Python realizará la descarga e instalación de la librería automáticamente, y estará lista para ser utilizada)</p>
+<p>1) Será de utilidad tener instalado un entorno de desarrollo, en este caso, utilizamos de preferencia <strong>"VISUAL STUDIO CODE"</strong>.</p>
+
+<P>2) En el mismo entrono de desarrollo, intalaremos <strong>"PYTHON"</strong>, como lenguaje de programación, para el desarrollo y puesta en funcionamiento de la aplicación</P>
+
+<p>3) Y para ejecutar el Programa, es necesario tener descargada la Librería <strong>"PANDAS"</strong>, que fue la Librería seleccionada para la creación de los objetos en Python. (la misma se instala de la siguiente manera: En <strong>Visual Studio Code</strong>, ya  en el archivo Python a desarrollar o ejecutar, abrimos la <strong>Terminal</strong> dedicada, e ingresamos la siguiente línea de código… <strong>"pip install pandas"<strong/> y damos <strong>Enter</strong>,  Python realizará la descarga e instalación de la librería automáticamente, y estará lista para ser utilizada)</p>
 
 <hr/>
 
