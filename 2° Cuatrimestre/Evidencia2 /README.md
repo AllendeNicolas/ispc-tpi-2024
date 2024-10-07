@@ -55,7 +55,7 @@ Carlos Direni - 28.117.281 - direnicarlos@gmail.com - https://github.com/Cdireni
 
 <hr/>
 
-<p>En el repositorio, específicamente dentro de la carpeta 2° Cuatrimestre, la carpeta Evidencia 1, que contiene un sub-archivo denominado app, con lo solicitado para cumplir los requisitos de la Evidencia 2, del módulo de Innovación y gestión de Base de Datos. En ella se encuentran: <p/>
+<p>En el repositorio, específicamente dentro de la carpeta 2° Cuatrimestre, la carpeta Evidencia 1, que contiene un sub-archivo denominado app, con lo solicitado para cumplir los requisitos de la Evidencia 2, del módulo de Innovación y gestión de Base de Datos. En ella se encuentran: un archivo denominado accesos_funciones.py, aquí se encuentran algunas funciones, Función principal para el control de acceso, cargar usuarios desde el archivo binario, registrar accesos, registrar intentos fallidos. Otro archivo denominado crud_usuarios se encuentran las funciones para llevar a cabo la funcionalidad del programa y crea el usuiario.ispc, y figuran la clases User. Archivo menu.py, donde figura el menú de opciones. y un último archivo conectado.py, con la función para volver al menú principal.<p/>
 
 <hr/>
 
