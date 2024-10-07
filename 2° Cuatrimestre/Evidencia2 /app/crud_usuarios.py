@@ -64,22 +64,3 @@ def show_all_users():
             print(df_usuarios)
     except:
         print('El archivo usuarios.ispc no existe')
-    
-    
-        
-        
-
-usuario1 = (UserManager('ema', 'xd', 'ema@xd'))
-#usuario = Users(1, 'ema', 'xd', 'ema@xd')
-
-#usuario2 = str(Users(2, 'juan', 'xdjuan', 'juan@xd')) + '\n'
-usuario2 = UserManager('juan', 'xdjuan', 'juan@xd')
-
-
-#add_user(usuario1)
-#add_user(usuario2)
-
-#print(f'usuario {usuario2}')
-#add_user(usuario2)
-
-#show_all_users()
