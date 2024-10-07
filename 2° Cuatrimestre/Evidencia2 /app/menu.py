@@ -1,4 +1,5 @@
 from crud_usuarios import *
+from accesos_funciones import *
 
 '''class Menu:
     def __init__(self):
@@ -22,7 +23,10 @@ def display_menu():
         #nombres de funciones siguientes ficticios, hay que crearlas con POO
         
         if option == "1":
-            pass
+            # Datos de ingreso del usuario
+            username = input("Ingrese su nombre de usuario: ")
+            password = input("Ingrese su contraseña: ")
+            control_acceso(username, password)
         
         elif option == "2":
             usuario = input('Ingresa nombre de usuario:')
@@ -33,11 +37,17 @@ def display_menu():
             add_user(usuario_obj)
 
         elif option == "3":
-            modify_user()
+            print('Modificar usuario')
+            usuario = input('Ingresa el username a modificar:')
+            modify_user(usuario)
         elif option == "4":
-            delete_user()
+            print('Eliminar usuario')
+            usuario = input('Ingresa el username o email del usuario a eliminar:')
+            delete_user(usuario)
         elif option == "5":
-            search_user()
+            print('Eliminar usuario')
+            usuario = input('Ingresa el username o email del usuario a buscar:')
+            search_user(usuario)
         elif option == "6":
             show_all_users()
             
@@ -49,4 +59,6 @@ def display_menu():
         """self es una referencia al objeto actual de una clase. 
         se llama a las funciones que serán creadas"""
 
-display_menu()
+
+if __name__ == "__main__":
+    display_menu()
