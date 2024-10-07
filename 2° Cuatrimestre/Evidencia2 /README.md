@@ -90,7 +90,7 @@ El otro inconveniente, fue ponernos de acuerdo, con los nombres de las funciones
 
 <p> Para Ejecutar la aplicación debemos seguir los siguientes pasos:</p>
 <p> 1) Ejecutar el script principal "menu.py" que se encuentra en la carpeta "app".</p>
-<p> 2) Elegir una opción de la que ofrece le menú.</p>
+<p> 2) Elegir una opción de las que ofrece le menú.</p>
 <p> 3) Ingresar los datos de usuario según corresponda.</p>
 
 <hr/> 
