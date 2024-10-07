@@ -33,7 +33,7 @@ def add_user(usuario):
     with open('usuarios.ispc', 'wb') as archivo:
         pickle.dump(df_final, archivo)
 
-def modify_user():
+def modify_user(usuario):
     try:
         with open('usuarios.ispc', 'rb') as archivo:
             df_usuarios = pickle.load(archivo)
@@ -41,7 +41,7 @@ def modify_user():
         print('El archivo usuarios.ispc no existe')
     
 
-def delete_user():
+def delete_user(usuario):
     try:
         with open('usuarios.ispc', 'rb') as archivo:
             df_usuarios = pickle.load(archivo)
@@ -49,7 +49,7 @@ def delete_user():
         print('El archivo usuarios.ispc no existe')
     
 
-def search_user():
+def search_user(usuario):
     try:
         with open('usuarios.ispc', 'rb') as archivo:
             df_usuarios = pickle.load(archivo)
