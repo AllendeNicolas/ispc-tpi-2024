@@ -15,7 +15,7 @@ delete from empresa where Id_empresa = 10011;
 
 -- SQL SELECT *
 
-Select * from postulantes;
+Select * from postulante;
 
 -- SQL SELECT FROM
 
