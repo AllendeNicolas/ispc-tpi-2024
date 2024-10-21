@@ -5,8 +5,7 @@
 <div id="top"></div>
 
 <div align="center">
-<h3 align="center">Evidencia 3: Programación Orientada a Objetos (POO) y al uso de Archivos
-en Python (archivos de texto y binarios).</h3>
+<h3 align="center">Evidencia 3: Ordenamiento y registros, con Pandas y Matplotlib en Python, y Modificacones en Base de Datos MySQL: (archivos de texto y binarios).</h3>
  <p align="center">
      Proyecto: DATA  HUMAN´S
     <br />
@@ -55,7 +54,7 @@ Carlos Direni - 28.117.281 - direnicarlos@gmail.com - https://github.com/Cdireni
 
 <hr/>
 
-<p>En el repositorio, específicamente dentro de la carpeta 2° Cuatrimestre, la carpeta Evidencia 1, que contiene un sub-archivo denominado app, con lo solicitado para cumplir los requisitos de la Evidencia 2, del módulo de Innovación y gestión de Base de Datos. En ella se encuentran: un archivo denominado accesos_funciones.py, aquí se encuentran algunas funciones, Función principal para el control de acceso, cargar usuarios desde el archivo binario, registrar accesos, registrar intentos fallidos. Otro archivo denominado crud_usuarios se encuentran las funciones para llevar a cabo la funcionalidad del programa y crea el usuiario.ispc, y figuran la clases User. Archivo menu.py, donde figura el menú de opciones. y un último archivo conectado.py, con la función para volver al menú principal.<p/>
+<p>En el repositorio, específicamente dentro de la carpeta 2° Cuatrimestre, la carpeta Evidencia 3, que contiene un sub-archivo denominado app, con lo solicitado para cumplir los requisitos de la Evidencia 3, del módulo de Innovación y gestión de Base de Datos. En ella se encuentran:.<p/>
 
 <hr/>
 
@@ -63,7 +62,9 @@ Carlos Direni - 28.117.281 - direnicarlos@gmail.com - https://github.com/Cdireni
 
 <hr/>
 
-<p>En este sector, dentro de la carpeta 2° Cuatrimestre, la carpeta Evidencia 2, que contiene un sub-archivo denominado bd, encontrará lo solicitado en Base de Datos II para cumplir los requisitos de la Evidencia 2, del módulo de Innovación y gestión de Base de Datos. En ella se encuentran: un archivo en formato PDF, que contiene la estructura de la base de datos, con cada una de sus tablas y datos cargados, y en el mismo, las conultas SQL realizadas en MySQL, junto con el resultado de cada una de ellas. Un Script SQL denominado datahumans_consultas.sql, donde se encuentran las conultas utilizadas para un Backend en Python. Un Sript SQL, que contiene la estructura completa de la Base de Datos del proyecto, con cada una de sus tablas y datos, denominada datahumanssql.sql, y por último, un tercer archivos en formato SQL, con el nombre de datahumansonlyestructuredsql.sql, donde podrá encontrar sólo la estructura de la Base de Datos, sin datos cargados.<p/>
+<p>En este sector, dentro de la carpeta 2° Cuatrimestre, la carpeta Evidencia 3, que contiene un sub-archivo denominado bd, encontrará lo solicitado en Base de Datos II para cumplir los requisitos de la Evidencia 2, del módulo de Innovación y gestión de Base de Datos. En ella se encuentran: un archivo en formato PDF, que contiene la estructura de la base de datos, con cada una de sus tablas y datos cargados, y en el mismo, las conultas SQL realizadas en MySQL, junto con el resultado de cada una de ellas. Un Script SQL denominado datahumans_consultas_corregidas.sql, donde se encuentran las conultas utilizadas para un Backend en Python. Un Sript SQL, que contiene la estructura completa de la Base de Datos del proyecto, con cada una de sus tablas y datos, denominada ( CORREGIR NOMBRE-datahumanssql.sql), y por último, un tercer archivos en formato SQL, con el nombre de datahumansonlyestructuredsql.sql, donde podrá encontrar sólo la estructura de la Base de Datos, sin datos cargados.
+
+Procuramos relizar las modificaciones sugeridas en la Base de datos y en las Consulas, ofrecidas por la Porfesora, para una mejor Normalización e implementación, y que junto con la conexion al programa desarrollado en Python, permitan un uso más fluido del sistema.<p/>
 
 <hr/> 
 
