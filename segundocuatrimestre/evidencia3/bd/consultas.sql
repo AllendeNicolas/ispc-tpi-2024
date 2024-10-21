@@ -31,3 +31,8 @@ INNER JOIN vacantes ON empresa.Id_empresa = vacantes.Id_empresa;
 SELECT postulante.Nombre, postulante.Apellido, postulante.Dni, puestodeseado.Titulopuesto
 FROM postulante 
 LEFT JOIN puestodeseado ON postulante.id_postulante = puestodeseado.id_postulante;
+
+SELECT Nombre, Puestodeseado
+FROM postulante
+LEFT JOIN puestodeseado
+ON postulante.Nombre = puestodeseado.Titulopuesto;
