@@ -174,12 +174,61 @@ def delete_user():
         print('El archivo usuarios.ispc o el usuario no existe')
     
 
-def search_user(usuario):
+# FUNCION PARA BUSCAR USUARIO
+def search_user():
+    # ABRE EL ARCHIVO BINARIO DE USUARIOS
     try:
         with open('usuarios.ispc', 'rb') as archivo:
-            df_usuarios = pickle.load(archivo)
+            df_usuarios = pd.DataFrame(pickle.load(archivo))
+            
+            while True:
+            
+                print('''Indique que parametro va a utilizar para buscar usuario
+                        \n1) Nombre de usuario
+                        \n2) Email
+                        \n3) Volver al menú principal\n''')
+                print("-----------------------")
+
+                opcion = input('Ingresa una opción:')
+                print("-----------------------")
+
+
+                if opcion == '1':
+                    dato = input('Ingresa el nombre de usuario:')
+                    usuario_cargado = df_usuarios[df_usuarios['username'] == dato]
+
+                    print(f'''Datos del usuario
+                            \n- ID: {usuario_cargado.index[0]}
+                            \n- Nombre de usuario: {usuario_cargado.to_numpy()[0][0]}
+                            \n- Contraseña: {usuario_cargado.to_numpy()[0][1]}
+                            \n- Email: {usuario_cargado.to_numpy()[0][2]}\n''')
+                    
+                    input('Presiona una tecla para continuar...')
+                    break
+
+                elif opcion == '2':
+                    dato = validar_email('Ingresa el email:')
+                    usuario_cargado = df_usuarios[df_usuarios['email'] == dato]
+
+                    
+                    print(f'''Datos del usuario
+                            \n- ID: {usuario_cargado.index[0]}
+                            \n- Nombre de usuario: {usuario_cargado.to_numpy()[0][0]}
+                            \n- Contraseña: {usuario_cargado.to_numpy()[0][1]}
+                            \n- Email: {usuario_cargado.to_numpy()[0][2]}\n''')
+                    
+                    input('Presiona una tecla para continuar...')
+                    break
+
+                elif opcion == '3':
+                    break
+
+                else:
+                    print('Opción incorrecta')
+        
+    #EN CASO DE QUE NO ENCUENTRE COINCIDENCIA O NO EXISTA EL ARCHIVO MUESTRA MSJ DE ERROR
     except:
-        print('El archivo usuarios.ispc no existe')
+        print('El archivo usuarios.ispc o el usuario no existe')
     
 
 
@@ -189,5 +238,7 @@ def show_all_users():
         with open('usuarios.ispc', 'rb') as archivo:
             df_usuarios = pickle.load(archivo)
             print(df_usuarios)
+        input('Presiona una tecla para continuar...')
+        
     except:
         print('El archivo usuarios.ispc no existe')

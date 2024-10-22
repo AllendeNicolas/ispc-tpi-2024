@@ -46,9 +46,8 @@ def display_menu():
             delete_user()
         
         elif option == "5":
-            print('Eliminar usuario')
-            usuario = input('Ingresa el username o email del usuario a buscar:')
-            search_user(usuario)
+            print('Buscar usuario')
+            search_user()
         
         elif option == "6":
             show_all_users()
