@@ -109,12 +109,69 @@ def modify_user(usuario):
     
 
 # FUNCION PARA ELIMINAR USUARIO
-def delete_user(usuario):
+def delete_user():
+
+    # ABRE EL ARCHIVO BINARIO DE USUARIOS
     try:
         with open('usuarios.ispc', 'rb') as archivo:
-            df_usuarios = pickle.load(archivo)
+            df_usuarios = pd.DataFrame(pickle.load(archivo))
+            
+            while True:
+            
+                print('''Indique que parametro va a utilizar para eliminar usuario
+                        \n1) Nombre de usuario
+                        \n2) Email
+                        \n3) Volver al menú principal\n''')
+                print("-----------------------")
+
+                opcion = input('Ingresa una opción:')
+                print("-----------------------")
+
+
+                if opcion == '1':
+                    dato = input('Ingresa el nombre de usuario:')
+                    usuario_cargado = df_usuarios[df_usuarios['username'] == dato]
+
+
+                    print(f'''Datos del usuario
+                            \n- Nombre de usuario: {usuario_cargado.to_numpy()[0][0]}
+                            \n- Email: {usuario_cargado.to_numpy()[0][2]}\n''')
+                    
+                    df_usuarios = df_usuarios.drop(usuario_cargado.index)
+                    # GUARDA EL DF MODIFICADO EN EL ARCHIVO BINARIO REEMPLAZANDO EL CONTENIDO ANTERIOR 
+                    with open('usuarios.ispc', 'wb') as archivo:
+                        pickle.dump(df_usuarios, archivo)
+                    print('El usuario se eliminó con exito')
+
+                    break
+
+                elif opcion == '2':
+                    dato = validar_email('Ingresa el email:')
+                    usuario_cargado = df_usuarios[df_usuarios['email'] == dato]
+
+
+                    print(f'''Datos del usuario
+                            \n- Nombre de usuario: {usuario_cargado.to_numpy()[0][0]}
+                            \n- Email: {usuario_cargado.to_numpy()[0][2]}\n''')
+                    
+                    df_usuarios = df_usuarios.drop(usuario_cargado.index)
+                    # GUARDA EL DF MODIFICADO EN EL ARCHIVO BINARIO REEMPLAZANDO EL CONTENIDO ANTERIOR 
+                    with open('usuarios.ispc', 'wb') as archivo:
+                        pickle.dump(df_usuarios, archivo)
+                    print('El usuario se eliminó con exito')
+
+                    break
+
+                elif opcion == '3':
+                    break
+
+                else:
+                    print('Opción incorrecta')
+        
+        
+    #EN CASO DE QUE NO ENCUENTRE COINCIDENCIA O NO EXISTA EL ARCHIVO MUESTRA MSJ DE ERROR
     except:
-        print('El archivo usuarios.ispc no existe')
+        print('El archivo usuarios.ispc o el usuario no existe')
     
 
 def search_user(usuario):

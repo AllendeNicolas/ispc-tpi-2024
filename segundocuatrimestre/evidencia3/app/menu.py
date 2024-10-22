@@ -20,7 +20,7 @@ def display_menu():
         print("7. Salir")
         print("-----------------------")
         option = (input("Ingrese una opcion: "))
-        #nombres de funciones siguientes ficticios, hay que crearlas con POO
+        print("-----------------------")
         
         if option == "1":
             # Datos de ingreso del usuario
@@ -40,14 +40,16 @@ def display_menu():
             print('Modificar usuario')
             usuario = input('Ingresa el username a modificar:')
             modify_user(usuario)
+        
         elif option == "4":
             print('Eliminar usuario')
-            usuario = input('Ingresa el username o email del usuario a eliminar:')
-            delete_user(usuario)
+            delete_user()
+        
         elif option == "5":
             print('Eliminar usuario')
             usuario = input('Ingresa el username o email del usuario a buscar:')
             search_user(usuario)
+        
         elif option == "6":
             show_all_users()
             
