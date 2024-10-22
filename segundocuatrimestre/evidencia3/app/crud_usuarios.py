@@ -16,22 +16,25 @@ class Acceso:
 
 
 # FUNCION PARA VALIDADAR EMAIL
-def validar_email(email):
+def validar_email(msj):
     """Comprobar si el correo electronico tiene formato válido."""
+    while True:
+        email = input(msj)
+        # Expresión regular para validar  Email
+        regex = r'^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w+$'
 
-    # Expresión regular para validar  Email
-    regex = r'^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w+$'
+        # Si la cadena coincide con una expresión regular, es un correo electrónico válido.
+        if re.match(regex, email):
+            break
+        else:
+            print('EL FORMATO DEL EMAIL ES INCORRECTO, VUELVE A INTENTARLO\n')
 
-    # Si la cadena coincide con una expresión regular, es un correo electrónico válido.
-    if re.match(regex, email):
-        return True
-
-    else:
-        return False
+    return email
 
 
 
 
+# FUNCION PARA AGREGAR USUARIO
 def add_user(usuario):
 
     try:
@@ -45,6 +48,7 @@ def add_user(usuario):
     
     with open('usuarios.ispc', 'wb') as archivo:
         pickle.dump(df_final, archivo)
+
 
 # FUNCION PARA MODIFICAR DATOS DE USUARIO
 def modify_user(usuario):
@@ -69,7 +73,7 @@ def modify_user(usuario):
         
         while True:
             
-            print('''Que dato/s vas a modificar
+            print('''Que dato/s vas a modificar?
               \n1) Nombre de usuario
               \n2) Contraseña
               \n3) Email
@@ -89,11 +93,7 @@ def modify_user(usuario):
                 df_usuarios.loc[usuario_cargado.index, 'password'] = nuevo_dato
 
             elif opcion == '3':
-                nuevo_dato = input('Ingresa el nuevo email:')
-
-                while not validar_email(nuevo_dato):
-                    print('EL FORMATO DEL EMAIL ES INCORRECTO')
-                    nuevo_dato = input('Ingresa email nuevamente:')
+                nuevo_dato = validar_email('Ingresa el nuevo email:')
 
                 df_usuarios.loc[usuario_cargado.index, 'email'] = nuevo_dato
 
@@ -108,6 +108,7 @@ def modify_user(usuario):
                 print('Opción incorrecta')     
     
 
+# FUNCION PARA ELIMINAR USUARIO
 def delete_user(usuario):
     try:
         with open('usuarios.ispc', 'rb') as archivo:
@@ -124,6 +125,8 @@ def search_user(usuario):
         print('El archivo usuarios.ispc no existe')
     
 
+
+# FUNCION PARA MOSTRAR TODOS LOS USUARIOS
 def show_all_users():
     try:
         with open('usuarios.ispc', 'rb') as archivo:

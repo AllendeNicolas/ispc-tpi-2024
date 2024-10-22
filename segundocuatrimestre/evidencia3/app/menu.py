@@ -31,7 +31,7 @@ def display_menu():
         elif option == "2":
             usuario = input('Ingresa nombre de usuario:')
             contrasena = input('Ingresa una contraseña:')
-            email = input('Ingresa tu email:')
+            email = validar_email('Ingresa tu email:')
 
             usuario_obj = UserManager(usuario, contrasena, email)
             add_user(usuario_obj)
