@@ -1,5 +1,7 @@
 from menu_evidencia2 import display_menu_ev2
-import ordenamiento
+from ordenamiento_busqueda import ordenar
+from registros_pluviales import registros_pluviales
+
 
 def display_menu():
     while True:
@@ -7,10 +9,9 @@ def display_menu():
         print('''   
                     1) Ordenar usuarios\n
                     2) Buscar usuario\n
-                    3) Cargar registros pluviales de un año\n
-                    4) Ver graficos de registros pluviales\n
-                    5) Ir al menú de la evidencia 2\n
-                    6) Salir\n''')
+                    3) Registros pluviales\n
+                    4) Ir al menú de la evidencia 2\n
+                    5) Salir\n''')
         
         print("-" * 70)
 
@@ -19,21 +20,18 @@ def display_menu():
         print("-" * 70)
         
         if option == "1":
-            ordenamiento.ordenar()
+            ordenar()
 
         elif option == "2":
             pass
 
         elif option == "3":
-            pass
-        
+            registros_pluviales()
+
         elif option == "4":
-            pass
-        
-        elif option == "5":
             display_menu_ev2()
 
-        elif option == "6":
+        elif option == "5":
             print("Saliendo de la aplicación.")
             break
         else:
