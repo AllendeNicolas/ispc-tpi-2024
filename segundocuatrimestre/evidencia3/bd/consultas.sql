@@ -32,12 +32,3 @@ SELECT *
 FROM postulante
 INNER JOIN puestodeseado
 ON postulante.id_puestodeseado = puestodeseado.id_puestodeseado;
-
-SELECT postulante.Nombre, postulante.apellido, postulante.dni, puestodeseado.titulopuesto
-FROM postulante 
-LEFT JOIN puestodeseado ON postulante.id_postulante = puestodeseado.id_postulante;
-
-SELECT Nombre, Puestodeseado
-FROM postulante
-LEFT JOIN puestodeseado
-ON postulante.Nombre = puestodeseado.Titulopuesto;
