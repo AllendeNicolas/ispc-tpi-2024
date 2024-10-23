@@ -1,34 +1,39 @@
-INSERT INTO caracteristicaspuesto (Id_caractpuesto, Id_vacantes, Descripcion, Condicioncontratacion, Experiencia, Excluyente, Seconsidera)
-VALUES (31007, 
-30007,
+INSERT INTO caracteristicaspuesto (id_caractpuesto, descripcion, condicioncontratacion, excluyente, experiencia, seconsidera, id_vacantes)
+VALUES (31007,
 'Se solicita Maestranza de caracter urgente',
 'Permanente',
-'Sin Experiencia',
 'Mayor de edad, residir en Cordoba Capital',
-'Buena presencia');
+'Sin Experiencia',
+'Buena presencia', 
+31007);
 
 UPDATE empresa 
-SET Cantvacantes = 8 
-WHERE Id_empresa = 10001;
+SET cantvacantes = 8 
+WHERE id_empresa = 10001;
 
 SELECT * FROM postulante;
 
 SELECT * FROM empresa 
-WHERE Cantvacantes BETWEEN 3 AND 10;
+WHERE cantvacantes BETWEEN 3 AND 10;
 
 SELECT * FROM postulante 
-INNER JOIN residencia ON postulante.Id_postulante = residencia.Id_postulante
-WHERE residencia.Localidad = 'Cordoba'
+INNER JOIN residencia ON postulante.id_postulante = residencia.id_postulante
+WHERE residencia.localidad = 'Cordoba'
 LIMIT 5;
 
 SELECT * FROM postulante
 WHERE postulante.Fechanacimiento BETWEEN '1944-02-27' AND '1991-02-07';
 
-SELECT empresa.Id_empresa, empresa.Razonsocial, empresa.Rubro, vacantes.Titulopuesto, vacantes.Cantvacantes, vacantes.Fechavacantes
+SELECT empresa.id_empresa, empresa.razonsocial, empresa.rubro, vacantes.titulopuesto, vacantes.vacantesdisponibles, vacantes.fechavacantes
 FROM empresa
-INNER JOIN vacantes ON empresa.Id_empresa = vacantes.Id_empresa;
+INNER JOIN vacantes ON empresa.id_empresa = vacantes.id_empresa;
 
-SELECT postulante.Nombre, postulante.Apellido, postulante.Dni, puestodeseado.Titulopuesto
+SELECT * 
+FROM postulante
+INNER JOIN puestodeseado
+ON postulante.id_puestodeseado = puestodeseado.id_puestodeseado;
+
+SELECT postulante.Nombre, postulante.apellido, postulante.dni, puestodeseado.titulopuesto
 FROM postulante 
 LEFT JOIN puestodeseado ON postulante.id_postulante = puestodeseado.id_postulante;
 
