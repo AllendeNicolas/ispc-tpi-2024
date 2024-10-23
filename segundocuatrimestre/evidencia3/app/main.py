@@ -1,9 +1,12 @@
 from menu_evidencia2 import display_menu_ev2
-from ordenamiento_busqueda import ordenar
+from ordenamiento_busqueda import ordenar, busqueda_usuario
 from registros_pluviales import registros_pluviales
 
 
+
 def display_menu():
+    # DEFINE BANDERA COMO FALSA PARA CONTROLAR SI LOS REGISTROS DE USUARIOS ESTAN ORDENADOS
+    flag_usuarios_ordenados = False
     while True:
         print("-" * 25 ,"Menu Principal","-" * 29)
         print('''   
@@ -20,10 +23,10 @@ def display_menu():
         print("-" * 70)
         
         if option == "1":
-            ordenar()
+            flag_usuarios_ordenados = ordenar()
 
         elif option == "2":
-            pass
+            busqueda_usuario(flag_usuarios_ordenados)
 
         elif option == "3":
             registros_pluviales()
