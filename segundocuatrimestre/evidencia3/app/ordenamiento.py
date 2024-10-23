@@ -11,14 +11,11 @@ def ordenar():
     print("-" * 70)
 
 # FUNCION DE ORDENAMIENTO CON METODO BURBUJA HECHA POR NOSOTROS
-def ordenar_burbuja ():
+def ordenar_burbuja():
     try:
         with open('usuarios.ispc', 'rb') as archivo:
             df_usuarios = pd.DataFrame(pickle.load(archivo))
-            print('\ndf MODIFICADO\n')
-            print(df_usuarios)
     
-
         #CONVIERTE EL DATAFRAME EN UNA LISTA DE LISTAS
         usuarios_cargados_lista = df_usuarios.values.tolist()
 
@@ -35,18 +32,36 @@ def ordenar_burbuja ():
                 if usuarios_cargados_lista[j][0] > usuarios_cargados_lista[j+1][0]:
                     usuarios_cargados_lista[j], usuarios_cargados_lista[j+1] = usuarios_cargados_lista[j+1], usuarios_cargados_lista[j]
 
+
+        # CONVIERTE LA LISTA EN DATAFRAME PASANDO NUEVAMENTE LOS NOMBRES DE LAS COLUMNAS
         df_usuarios = pd.DataFrame(usuarios_cargados_lista, columns=['username', 'password', 'email'])    
+
+        # GUARDA EL DF MODIFICADO EN EL ARCHIVO BINARIO REEMPLAZANDO EL CONTENIDO ANTERIOR 
+        with open('usuarios.ispc', 'wb') as archivo:
+            pickle.dump(df_usuarios, archivo)
         
-        print('\ndf MODIFICADO\n')
-        print(df_usuarios)
     
 
 # FUNCION DE ORDENAMIENTO USANDO LIBRERIA DE PYTHON
-def ordenar_lista_de_listas(lista_de_listas):
+def ordenar_con_sorted():
+    try:
+        with open('usuarios.ispc', 'rb') as archivo:
+            df_usuarios = pd.DataFrame(pickle.load(archivo))
 
-    sorted(lista_de_listas, key=itemgetter(1))
+        #CONVIERTE EL DATAFRAME EN UNA LISTA DE LISTAS
+        usuarios_cargados_lista = df_usuarios.values.tolist()
 
-    return lista_de_listas
+    #EN CASO DE QUE NO ENCUENTRE COINCIDENCIA O NO EXISTA EL ARCHIVO MUESTRA MSJ DE ERROR
+    except:
+        print('El archivo usuarios.ispc o el usuario no existe')
 
+    else:
+        usuarios_cargados_lista = sorted(usuarios_cargados_lista, key=itemgetter(0))
 
-ordenar_burbuja()
+        # CONVIERTE LA LISTA EN DATAFRAME PASANDO NUEVAMENTE LOS NOMBRES DE LAS COLUMNAS
+        df_usuarios = pd.DataFrame(usuarios_cargados_lista, columns=['username', 'password', 'email'])    
+
+        # GUARDA EL DF MODIFICADO EN EL ARCHIVO BINARIO REEMPLAZANDO EL CONTENIDO ANTERIOR 
+        with open('usuarios.ispc', 'wb') as archivo:
+            pickle.dump(df_usuarios, archivo)
+
