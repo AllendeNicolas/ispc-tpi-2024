@@ -71,7 +71,7 @@ def graficar_datos(df):
     plt.show()
 
 # Función principal
-def main():
+def registros_pluviales():
     year = 2023
     filename = f'registroPluvial{year}.csv'
 
@@ -95,5 +95,4 @@ def main():
     # Graficar los datos
     graficar_datos(df)
 
-if __name__ == "__main__":
-    main()
+
