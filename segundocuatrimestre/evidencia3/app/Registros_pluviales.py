@@ -1,5 +1,3 @@
-
-
 import numpy as np
 import pandas as pd
 import random
@@ -57,7 +55,7 @@ def graficar_datos(df):
     # Gráfico de dispersión
     dias = np.arange(1, 32)
     for mes in df.columns:
-        plt.scatter([calendar.month_name.index(mes)] * len(df[mes]), dias[:len(df[mes])], label=mes)
+        plt.scatter([list(calendar.month_name).index(mes)] * len(df[mes]), dias[:len(df[mes])], label=mes)
     
     plt.title('Dispersión de Lluvias por Mes')
     plt.xlabel('Meses')
