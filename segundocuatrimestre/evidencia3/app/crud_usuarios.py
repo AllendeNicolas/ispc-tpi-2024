@@ -39,7 +39,7 @@ def add_user(usuario):
 
     try:
         with open('usuarios.ispc', 'rb') as archivo:
-            df_usuarios = pickle.load(archivo)
+            df_usuarios = pd.DataFrame(pickle.load(archivo))
     except:
         df_usuarios = pd.DataFrame({'username':[], 'password':[], 'email':[]})
 
