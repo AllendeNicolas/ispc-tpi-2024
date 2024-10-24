@@ -1,6 +1,7 @@
 from menu_evidencia2 import display_menu_ev2
 from ordenamiento_busqueda import ordenar, busqueda_usuario
 from registros_pluviales import registros_pluviales
+from conexion_bd import conectar_base_datos
 
 
 
@@ -33,7 +34,7 @@ def display_menu():
             registros_pluviales()
 
         elif option == "4":
-            pass
+            conectar_base_datos()
 
         elif option == "5":
             display_menu_ev2()

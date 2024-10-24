@@ -166,5 +166,3 @@ def conectar_base_datos():
 
 
     conexion.close()
-
-conectar_base_datos()
