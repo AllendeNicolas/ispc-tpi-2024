@@ -13,8 +13,9 @@ def display_menu():
                     1) Ordenar usuarios\n
                     2) Buscar usuario\n
                     3) Registros pluviales\n
-                    4) Ir al menú de la evidencia 2\n
-                    5) Salir\n''')
+                    4) Conectar y testear base de datos\n
+                    5) Ir al menú de la evidencia 2\n
+                    6) Salir\n''')
         
         print("-" * 70)
 
@@ -32,9 +33,12 @@ def display_menu():
             registros_pluviales()
 
         elif option == "4":
-            display_menu_ev2()
+            pass
 
         elif option == "5":
+            display_menu_ev2()
+
+        elif option == "6":
             print("Saliendo de la aplicación.")
             break
         else:
