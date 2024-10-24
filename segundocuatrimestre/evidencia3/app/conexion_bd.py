@@ -1,8 +1,7 @@
 
 def conectar_base_datos():
     
-    print("""CONEXIÓN Y TESTEO DE LA BASE DE DATOS\n
-          INGRESA LOS DATOS DE TU SERVIDOR LOCAL  (EL PUERTO TIENE EL VALOR 3306 POR DEFAULT)""")
+    print("CONEXIÓN Y TESTEO DE LA BASE DE DATOS\n")
     usuario = str(input('User:'))
     contrasena = str(input('Password:'))
 
@@ -11,7 +10,7 @@ def conectar_base_datos():
     conexion = mysql.connector.connect(user=usuario,
                                     password=contrasena,
                                     host='localhost',
-                                    database="datahumans_prueba"
+                                    database="datahumans_probando"
                                     )
 
     cursor = conexion.cursor()
@@ -19,15 +18,15 @@ def conectar_base_datos():
 
 
 
-    cursor.execute("""INSERT INTO caracteristicaspuesto (id_caractpuesto, descripcion, condicioncontratacion, excluyente, experiencia, seconsidera, id_vacantes)
-                      VALUES (31007,'Se solicita Maestranza de caracter urgente','Permanente','Mayor de edad, residir en Cordoba Capital','Sin Experiencia','Buena presencia', 31007)""")
-
-    print('-' * 70)
-    print('SE EJECUTÓ LA SIGUIENTE CONSULTA:\n')
-    print("""INSERT INTO caracteristicaspuesto (id_caractpuesto, descripcion, condicioncontratacion, excluyente, experiencia, seconsidera, id_vacantes)
-            VALUES (31007,'Se solicita Maestranza de caracter urgente','Permanente','Mayor de edad, residir en Cordoba Capital','Sin Experiencia','Buena presencia', 31007)""")
-
-
+    #cursor.execute("""INSERT INTO caracteristicaspuesto (id_caractpuesto, descripcion, condicioncontratacion, excluyente, experiencia, seconsidera, id_vacantes)
+    #                  VALUES (31007,'Se solicita Maestranza de caracter urgente','Permanente','Mayor de edad, residir en Cordoba Capital','Sin Experiencia','Buena presencia', 31007)""")
+#
+    #print('-' * 70)
+    #print('SE EJECUTÓ LA SIGUIENTE CONSULTA:\n')
+    #print("""INSERT INTO caracteristicaspuesto (id_caractpuesto, descripcion, condicioncontratacion, excluyente, experiencia, seconsidera, id_vacantes)
+    #        VALUES (31007,'Se solicita Maestranza de caracter urgente','Permanente','Mayor de edad, residir en Cordoba Capital','Sin Experiencia','Buena presencia', 31007)""")
+#
+#
     cursor.execute('''UPDATE empresa 
                       SET cantvacantes = 8 
                       WHERE id_empresa = 10001''')
