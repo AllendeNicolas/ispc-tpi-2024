@@ -84,9 +84,9 @@ Procuramos relizar las modificaciones sugeridas en la Base de datos y en las Con
 <h4 id='descripcionaplicacion'><strong> Ejecución del programa</strong></h4>
 
 <p> Para Ejecutar la aplicación debemos seguir los siguientes pasos:</p>
-<p> 1) Ejecutar el script principal "menu.py" que se encuentra en la carpeta "app".</p>
-<p> 2) Elegir una opción de las que ofrece le menú.</p>
-<p> 3) Ingresar los datos de usuario según corresponda.</p>
+<p> 1) Ejecutar el script principal "main.py" que se encuentra en la carpeta "app".</p>
+<p> 2) Elegir una opción de las que ofrece el menú.</p>
+<p> 3) Ingresar los datos según corresponda.</p>
 
 <hr/> 
 <h3> Link Evidencia 3</h3>
