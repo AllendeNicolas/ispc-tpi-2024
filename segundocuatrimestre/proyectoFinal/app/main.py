@@ -1,9 +1,18 @@
+# IMPORTAMOS LOS MODULOS
+from usuarios_accesos import menu_usuarios_accesos
+from ingreso_sistema import menu_ingreso_sist
+from analisis_datos import menu_analisis_datos
+
+
 def display_menu():
+
+    print('')
+    print("-" * 25 ,"BIENVENIDO AL PROYECTO FINAL","-" * 25)
+    print('')
+
     while True:
 
         # IMPRIME MENÚ DE OPCIONES POR CONSOLA
-        print('')
-        print("-" * 25 ,"BIENVENIDO AL PROYECTO FINAL","-" * 25)
         print("-" * 30 ,"Menú Principal","-" * 34)
         print('''   
                     1) Usuarios y Accesos de la Aplicación\n
@@ -15,19 +24,19 @@ def display_menu():
 
         option = (input("Ingrese una opción: "))
         
-        print("-" * 70)
+        print("-" * 80)
         
         # OPCIÓN 1 - USUARIOS Y ACCESOS DE LA APP
         if option == "1":
-            pass
+            menu_usuarios_accesos()
         
         # OPCIÓN 2 - INGRESAR AL SIST CON USUARIO Y CONTRASEÑA
         elif option == "2":
-            pass
+            menu_ingreso_sist()
         
         # OPCIÓN 3 - ANALISIS DE DATOS, REGISTROS PLUVIALES
         elif option == "3":
-            pass
+            menu_analisis_datos()
         
         # OPCIÓN 4 - SALE DE LA APP
         elif option == "4":
