@@ -69,29 +69,39 @@ def add_user(usuario):
     try:
         with open('usuarios.ispc', 'rb') as archivo:
             df_usuarios = pd.DataFrame(pickle.load(archivo))
+            
+            # CUANDO EXISTE EL ARCHIVO, ASIGNA VALOR PARA CUMPLIR LA CONDICION DEL IF E INCREMENTAR EL VALOR +1 
+            nuevoId = 2
     
     # SI DA ERROR ABRIR EL ARCHIVO CREA UN DF VACIO PARA CONTINUAR CON LA CARGA
     except:
         df_usuarios = pd.DataFrame({'id':[], 'username':[], 'dni':[], 'password':[], 'email':[]})
+        
+        # ASIGNA VALOR AL PRIMER REGISTRO PARA QUE NO QUEDE COMO NaN
+        nuevoId = 1
 
-    nuevoId = (df_usuarios['id'].max()) + 1
+    # INCREMENTA EL VALOR DEL ID +1 EN FUNCIÓN DEL MAYOR ID REGISTRADO
+    if nuevoId > 1:
+        nuevoId = (df_usuarios['id'].max()) + 1
 
     nuevo_usuario = {'id': nuevoId, 'username': usuario.username, 'dni': usuario.dni, 'password': usuario.get_password(), 'email': usuario.email}
     
-    df_final = df_usuarios._append(nuevo_usuario, ignore_index=True)
+    df_usuarios = df_usuarios._append(nuevo_usuario, ignore_index=True)
     
     # OREDENA EL DF POR DNI
-    df_final.sortvalues(by = 'dni')
+    df_usuarios = df_usuarios.sort_values('dni')
 
     with open('usuarios.ispc', 'wb') as archivo:
-        pickle.dump(df_final, archivo)
+        pickle.dump(df_usuarios, archivo)
 
 
 # FUNCION PARA MODIFICAR DATOS DE USUARIO
-def modify_user(usuario):
+def modificarUsuarioConMenu():
 
     # ABRE EL ARCHIVO BINARIO DE USUARIOS
     try:
+        usuario = input('Ingresa el username a modificar:')
+
         with open('usuarios.ispc', 'rb') as archivo:
             df_usuarios = pd.DataFrame(pickle.load(archivo))
         
@@ -112,9 +122,10 @@ def modify_user(usuario):
             
             print('''Que dato/s vas a modificar?
               \n1) Nombre de usuario
-              \n2) Contraseña
-              \n3) Email
-              \n4) Volver al menú principal\n''')
+              \n2) DNI
+              \n3) Contraseña
+              \n4) Email
+              \n5) Volver al menú anterior\n''')
             
             opcion = input('Ingresa una opción:')
 
@@ -124,17 +135,23 @@ def modify_user(usuario):
 
                 df_usuarios.loc[usuario_cargado.index, 'username'] = nuevo_dato
 
-            elif opcion == '2':
+            if opcion == '2':
+                nuevo_dato = input('Ingresa el nuevo DNI:')
+
+                df_usuarios.loc[usuario_cargado.index, 'dni'] = nuevo_dato
+
+            elif opcion == '3':
                 nuevo_dato = input('Ingresa la nueva contraseña:')
 
                 df_usuarios.loc[usuario_cargado.index, 'password'] = nuevo_dato
-
-            elif opcion == '3':
+            
+            elif opcion == '4':
                 nuevo_dato = validar_email('Ingresa el nuevo email:')
 
                 df_usuarios.loc[usuario_cargado.index, 'email'] = nuevo_dato
+                
 
-            elif opcion == '4':
+            elif opcion == '5':
                 # GUARDA EL DF MODIFICADO EN EL ARCHIVO BINARIO REEMPLAZANDO EL CONTENIDO ANTERIOR 
                 with open('usuarios.ispc', 'wb') as archivo:
                     pickle.dump(df_usuarios, archivo)
@@ -154,7 +171,8 @@ def delete_user():
             df_usuarios = pd.DataFrame(pickle.load(archivo))
             
             while True:
-            
+                
+                print("-" * 30 ,"ELIMINAR USUARIO","-" * 34)
                 print('''Indique que parametro va a utilizar para eliminar usuario
                         \n1) Nombre de usuario
                         \n2) Email
@@ -282,18 +300,86 @@ def show_all_users():
 
 
 
+# -----------------------------  MENÚS DE OPCIONES ------------------------------------
+
 def menuRegistrarUsuario():
+    '''
+    Muestra el menú de registro de usuarios y sus campos para completar
+    '''
 
-    print("-" * 30 ,"REGISTRAR UN NUEVO USUARIO","-" * 34)
-    print("-" * 22 ,"Por favor a continuación ingrese sus datos","-" * 26)
 
-    usuario = input('Nombre de usuario:')
-    dni = int(input('DNI:'))
-    contrasena = input('Contraseña:')
-    email = validar_email('Email')
+    try:
+        print("-" * 30 ,"REGISTRAR UN NUEVO USUARIO","-" * 34)
+        print("-" * 22 ,"Por favor a continuación ingrese sus datos","-" * 26)
 
-    usuario_obj = Usuario(usuario, dni, contrasena, email)
+        usuario = input('Nombre de usuario:')
+        dni = int(input('DNI:'))
+        contrasena = input('Contraseña:')
+        email = validar_email('Email: ')
 
-    add_user(usuario_obj)
+        usuario_obj = Usuario(usuario, dni, contrasena, email)
+    except:
+        print('Ocurrió un error en la carga de datos, por favor vuelve a intentar.')
+    
+    else:
+        add_user(usuario_obj)
 
-menuRegistrarUsuario()
+
+
+
+
+
+def menuCrudUsuarios():
+    '''
+    Muestra el menú del CRUD de uuarios y las opciones disponibles
+    '''
+    
+
+    while True:
+        print("-" * 30 ,"CRUD DE USUARIOS","-" * 34)
+
+        print('''   
+                    1) Registrar usuario\n
+                    2) Modificar usuario\n
+                    3) Eliminar usuario\n
+                    4) Volver al menú anterior\n''')
+        
+        print("-" * 80)
+
+        option = (input("Ingrese una opción: "))
+        
+        print("-" * 80)
+
+       
+        if option == "1":
+            menuRegistrarUsuario()
+        
+        elif option == "2":
+            modificarUsuarioConMenu()
+        
+        elif option == "4":
+            print('Eliminar usuario')
+            delete_user()
+        
+        elif option == "5":
+            print('Buscar usuario')
+            search_user()
+        
+        elif option == "6":
+            show_all_users()
+            
+        elif option == "7":
+            print("Saliendo de la aplicación.")
+            break
+        else:
+            print("Opción inválida, intente nuevamente.")
+    
+
+    try:
+        pass    
+    
+    except:
+        print('Ocurrió un error, por favor vuelve a intentar.')
+    
+    else:
+        pass
