@@ -3,40 +3,42 @@ import pandas as pd
 import re
 
 class Usuario:
-    def __init__(self, id, username, dni, password, email):
-        self.id = id
+    def __init__(self, username, dni, password, email):
+        self.id = None
         self.username = username
         self.dni = dni
-        self._password = password
+        self.__password = password
         self.email = email
 
     # MODIFICA ATRIBUTO PRIVADO CONTRASEÑA
     def set_password(self, password):
-        self._password = password
+        self.__password = password
     
     # RETORNA ATRIBUTO PRIVADO CONTRASEÑA
     def get_password(self):
-        return self._password
+        return self.__password
 
 
 class Acceso:
     def __init__(self, fecha_ingreso, fecha_salida, usuario_logueado):
         self.fecha_ingreso = fecha_ingreso
         self.fecha_salida = fecha_salida
-        self._usuario_logueado = usuario_logueado
+        self.__usuario_logueado = usuario_logueado
 
     # MODIFICA ATRIBUTO PRIVADO usuario_logueado
     def set_usuario_logueado(self, usuario):
-        self._usuario_logueado = usuario
+        self.__usuario_logueado = usuario
     
     # RETORNA ATRIBUTO PRIVADO usuario_logueado
     def get_usuario_logueado(self):
-        return self._usuario_logueado
+        return self.__usuario_logueado
 
 
 # FUNCION PARA VALIDADAR EMAIL
 def validar_email(msj):
-    """Comprobar si el correo electronico tiene formato válido."""
+    """Comprobar si el correo electronico tiene formato válido.
+    Se pasa por parámetro un mensaje para mostrar en el input"""
+
     while True:
         email = input(msj)
         # Expresión regular para validar  Email
@@ -68,14 +70,19 @@ def add_user(usuario):
         with open('usuarios.ispc', 'rb') as archivo:
             df_usuarios = pd.DataFrame(pickle.load(archivo))
     
-    # SI DA ERROR ABRIR EL ARCHIVO 'usuarios.ispc' CREA UNO
+    # SI DA ERROR ABRIR EL ARCHIVO CREA UN DF VACIO PARA CONTINUAR CON LA CARGA
     except:
         df_usuarios = pd.DataFrame({'id':[], 'username':[], 'dni':[], 'password':[], 'email':[]})
 
-    nuevo_usuario = {'id':  usuario.id, 'username': usuario.username, 'dni': usuario.dni, 'password': usuario.password, 'email': usuario.email}
+    nuevoId = (df_usuarios['id'].max()) + 1
+
+    nuevo_usuario = {'id': nuevoId, 'username': usuario.username, 'dni': usuario.dni, 'password': usuario.get_password(), 'email': usuario.email}
     
     df_final = df_usuarios._append(nuevo_usuario, ignore_index=True)
     
+    # OREDENA EL DF POR DNI
+    df_final.sortvalues(by = 'dni')
+
     with open('usuarios.ispc', 'wb') as archivo:
         pickle.dump(df_final, archivo)
 
@@ -272,3 +279,21 @@ def show_all_users():
         
     except:
         print('El archivo usuarios.ispc no existe')
+
+
+
+def menuRegistrarUsuario():
+
+    print("-" * 30 ,"REGISTRAR UN NUEVO USUARIO","-" * 34)
+    print("-" * 22 ,"Por favor a continuación ingrese sus datos","-" * 26)
+
+    usuario = input('Nombre de usuario:')
+    dni = int(input('DNI:'))
+    contrasena = input('Contraseña:')
+    email = validar_email('Email')
+
+    usuario_obj = Usuario(usuario, dni, contrasena, email)
+
+    add_user(usuario_obj)
+
+menuRegistrarUsuario()
