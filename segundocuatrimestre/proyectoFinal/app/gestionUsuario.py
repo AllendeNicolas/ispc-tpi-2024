@@ -19,19 +19,7 @@ class Usuario:
         return self.__password
 
 
-class Acceso:
-    def __init__(self, fecha_ingreso, fecha_salida, usuario_logueado):
-        self.fecha_ingreso = fecha_ingreso
-        self.fecha_salida = fecha_salida
-        self.__usuario_logueado = usuario_logueado
 
-    # MODIFICA ATRIBUTO PRIVADO usuario_logueado
-    def set_usuario_logueado(self, usuario):
-        self.__usuario_logueado = usuario
-    
-    # RETORNA ATRIBUTO PRIVADO usuario_logueado
-    def get_usuario_logueado(self):
-        return self.__usuario_logueado
 
 
 # FUNCION PARA VALIDADAR EMAIL
