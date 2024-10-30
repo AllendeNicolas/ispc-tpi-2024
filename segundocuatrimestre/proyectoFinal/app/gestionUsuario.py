@@ -18,10 +18,6 @@ class Usuario:
     def get_password(self):
         return self.__password
 
-
-
-
-
 # FUNCION PARA VALIDADAR EMAIL
 def validar_email(msj):
     """Comprobar si el correo electronico tiene formato válido.
@@ -208,53 +204,82 @@ def eliminarUsuarioConMenu():
     
 
 # FUNCION PARA BUSCAR USUARIO
-def search_user():
+def buscarUsuario():
     # ABRE EL ARCHIVO BINARIO DE USUARIOS
     try:
         with open('usuarios.ispc', 'rb') as archivo:
             df_usuarios = pd.DataFrame(pickle.load(archivo))
             
             while True:
-            
+                print("-" * 30 ,"BUSCAR USUARIOS","-" * 34)
                 print('''Indique que parametro va a utilizar para buscar usuario
-                        \n1) Nombre de usuario
-                        \n2) Email
-                        \n3) Volver al menú principal\n''')
-                print("-----------------------")
+                        \n1) DNI
+                        \n2) Nombre de usuario
+                        \n3) Email
+                        \n4) Mostrar todos
+                        \n5) Volver al menú anterior\n''')
+                print("-" * 80)
 
                 opcion = input('Ingresa una opción:')
-                print("-----------------------")
+                print("-" * 80)
 
 
                 if opcion == '1':
+                    try:
+                        dato = int(input('Ingresa el DNI:'))
+                    except:
+                        print('Dato incorrecto, vuelve a intentarlo')
+                        input('Presiona una tecla para continuar...')
+                        break
+                    else:
+                        usuario_cargado = df_usuarios[df_usuarios['dni'] == dato]
+
+                        print(f'''Datos del usuario
+                                \n- ID: {usuario_cargado.to_numpy[0][0]}
+                                \n- Nombre de usuario: {usuario_cargado.to_numpy()[0][1]}
+                                \n- DNI: {usuario_cargado.to_numpy()[0][2]}
+                                \n- Contraseña: {usuario_cargado.to_numpy()[0][3]}
+                                \n- Email: {usuario_cargado.to_numpy()[0][4]}\n''')
+                        
+                        input('Presiona una tecla para continuar...')
+                        break
+
+                elif opcion == '2':
                     dato = input('Ingresa el nombre de usuario:')
                     usuario_cargado = df_usuarios[df_usuarios['username'] == dato]
 
                     print(f'''Datos del usuario
-                            \n- ID: {usuario_cargado.index[0]}
-                            \n- Nombre de usuario: {usuario_cargado.to_numpy()[0][0]}
-                            \n- Contraseña: {usuario_cargado.to_numpy()[0][1]}
-                            \n- Email: {usuario_cargado.to_numpy()[0][2]}\n''')
-                    
-                    input('Presiona una tecla para continuar...')
-                    break
-
-                elif opcion == '2':
-                    dato = validar_email('Ingresa el email:')
-                    usuario_cargado = df_usuarios[df_usuarios['email'] == dato]
-
-                    
-                    print(f'''Datos del usuario
-                            \n- ID: {usuario_cargado.index[0]}
-                            \n- Nombre de usuario: {usuario_cargado.to_numpy()[0][0]}
-                            \n- Contraseña: {usuario_cargado.to_numpy()[0][1]}
-                            \n- Email: {usuario_cargado.to_numpy()[0][2]}\n''')
+                                \n- ID: {usuario_cargado.to_numpy[0][0]}
+                                \n- Nombre de usuario: {usuario_cargado.to_numpy()[0][1]}
+                                \n- DNI: {usuario_cargado.to_numpy()[0][2]}
+                                \n- Contraseña: {usuario_cargado.to_numpy()[0][3]}
+                                \n- Email: {usuario_cargado.to_numpy()[0][4]}\n''')
                     
                     input('Presiona una tecla para continuar...')
                     break
 
                 elif opcion == '3':
+                    dato = validar_email('Ingresa el email:')
+                    usuario_cargado = df_usuarios[df_usuarios['email'] == dato]
+
+                    
+                    print(f'''Datos del usuario
+                                \n- ID: {usuario_cargado.to_numpy[0][0]}
+                                \n- Nombre de usuario: {usuario_cargado.to_numpy()[0][1]}
+                                \n- DNI: {usuario_cargado.to_numpy()[0][2]}
+                                \n- Contraseña: {usuario_cargado.to_numpy()[0][3]}
+                                \n- Email: {usuario_cargado.to_numpy()[0][4]}\n''')
+                    
+                    input('Presiona una tecla para continuar...')
                     break
+                
+                elif opcion == '4':
+                    ("-" * 30 ,"TODOS LOS USUARIOS REGISTRADOS","-" * 34)
+                    show_all_users()
+
+                elif opcion == '5':
+                    break
+
 
                 else:
                     print('Opción incorrecta')
@@ -344,3 +369,34 @@ def menuCrudUsuarios():
 
 
 
+def menuOrdenarBuscarUsuarios():
+    '''
+    Muestra el menú de ordenamiento y busqueda de usuarios y las opciones disponibles
+    '''
+    
+
+    while True:
+        print("-" * 30 ,"ORDENAMIENTO Y BUSQUEDA DE USUARIOS","-" * 34)
+
+        print('''   
+                    1) Ordenar por username\n
+                    2) Buscar usuario\n
+                    3) Volver al menú anterior\n''')
+        
+        print("-" * 80)
+
+        option = (input("Ingrese una opción: "))
+        
+        print("-" * 80)
+
+       
+        if option == "1":
+            pass
+        
+        elif option == "2":
+            buscarUsuario()
+        
+        elif option == "3":
+            break
+        else:
+            print("Opción inválida, intente nuevamente.")
