@@ -52,16 +52,6 @@ def validar_email(msj):
 
     return email
 
-'''
-PARA RESOLVER EL ULTIMO ID CARGADO Y ASIGNAR ID VIEJO + 1 AL NUEVO REGISTRO
-# DEVUELVE EL MAXIMO VALOR POR COLUMNA
-print(dataframe.max()) SUPONGO QUE PARA QUE DEVUELVA EL MAYOR ID dataframe["id"].max() !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-'''
-
-'''
-PARA ORDENAR EL DATAFRAME POR DNI
-df.sort_values(by = "A") donde "A" es el nombre de una columna
-'''
 
 # FUNCION PARA AGREGAR USUARIO
 def add_user(usuario):
@@ -163,7 +153,7 @@ def modificarUsuarioConMenu():
     
 
 # FUNCION PARA ELIMINAR USUARIO
-def delete_user():
+def eliminarUsuarioConMenu():
 
     # ABRE EL ARCHIVO BINARIO DE USUARIOS
     try:
@@ -302,6 +292,8 @@ def show_all_users():
 
 # -----------------------------  MENÚS DE OPCIONES ------------------------------------
 
+
+# PENDIENTE METER MENU DENTRO DE LA FUNCION ADD_USER Y MODIFICAR EL NOMBRE DE DICHA FUNCION
 def menuRegistrarUsuario():
     '''
     Muestra el menú de registro de usuarios y sus campos para completar
@@ -326,12 +318,9 @@ def menuRegistrarUsuario():
 
 
 
-
-
-
 def menuCrudUsuarios():
     '''
-    Muestra el menú del CRUD de uuarios y las opciones disponibles
+    Muestra el menú del CRUD de usuarios y las opciones disponibles
     '''
     
 
@@ -357,29 +346,13 @@ def menuCrudUsuarios():
         elif option == "2":
             modificarUsuarioConMenu()
         
+        elif option == "3":
+            eliminarUsuarioConMenu()
+
         elif option == "4":
-            print('Eliminar usuario')
-            delete_user()
-        
-        elif option == "5":
-            print('Buscar usuario')
-            search_user()
-        
-        elif option == "6":
-            show_all_users()
-            
-        elif option == "7":
-            print("Saliendo de la aplicación.")
             break
         else:
             print("Opción inválida, intente nuevamente.")
-    
 
-    try:
-        pass    
-    
-    except:
-        print('Ocurrió un error, por favor vuelve a intentar.')
-    
-    else:
-        pass
+
+
