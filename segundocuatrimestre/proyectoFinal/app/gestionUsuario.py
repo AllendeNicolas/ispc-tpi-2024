@@ -1,6 +1,7 @@
 import pickle
 import pandas as pd
 import re
+from operator import itemgetter
 
 class Usuario:
     def __init__(self, username, dni, password, email):
@@ -17,6 +18,179 @@ class Usuario:
     # RETORNA ATRIBUTO PRIVADO CONTRASEÑA
     def get_password(self):
         return self.__password
+
+
+# FUNCION DE ORDENAMIENTO CON METODO BURBUJA HECHA POR NOSOTROS
+def ordenar_burbuja():
+    try:
+        with open('usuarios.ispc', 'rb') as archivo:
+            df_usuarios = pd.DataFrame(pickle.load(archivo))
+    
+        #CONVIERTE EL DATAFRAME EN UNA LISTA DE LISTAS
+        usuarios_cargados_lista = df_usuarios.values.tolist()
+
+    #EN CASO DE QUE NO ENCUENTRE COINCIDENCIA O NO EXISTA EL ARCHIVO MUESTRA MSJ DE ERROR
+    except:
+        print('El archivo usuarios.ispc o el usuario no existe')
+
+    else:
+
+        for i in range(len(usuarios_cargados_lista) - 1):
+
+            for j in range(len(usuarios_cargados_lista) - 1):
+
+                if usuarios_cargados_lista[j][1] > usuarios_cargados_lista[j+1][1]:
+                    usuarios_cargados_lista[j], usuarios_cargados_lista[j+1] = usuarios_cargados_lista[j+1], usuarios_cargados_lista[j]
+
+
+        # CONVIERTE LA LISTA EN DATAFRAME PASANDO NUEVAMENTE LOS NOMBRES DE LAS COLUMNAS
+        df_usuarios = pd.DataFrame(usuarios_cargados_lista, columns=['id', 'username', 'dni', 'password', 'email'])
+
+        # GUARDA EL DF MODIFICADO EN UN NUEVO ARCHIVO BINARIO
+        with open('usuariosOrdenadosPorUsername.ispc', 'wb') as archivo:
+            pickle.dump(df_usuarios, archivo)
+        
+        print('\nUSUARIOS ORDENADOS CON ÉXITO\n')
+        input('\nPresiona una tecla para continuar...')
+
+
+# FUNCION DE ORDENAMIENTO USANDO LIBRERIA DE PYTHON
+def ordenar_con_sorted():
+    try:
+        with open('usuarios.ispc', 'rb') as archivo:
+            df_usuarios = pd.DataFrame(pickle.load(archivo))
+
+        #CONVIERTE EL DATAFRAME EN UNA LISTA DE LISTAS
+        usuarios_cargados_lista = df_usuarios.values.tolist()
+
+    #EN CASO DE QUE NO ENCUENTRE COINCIDENCIA O NO EXISTA EL ARCHIVO MUESTRA MSJ DE ERROR
+    except:
+        print('El archivo usuarios.ispc o el usuario no existe')
+
+    else:
+        usuarios_cargados_lista = sorted(usuarios_cargados_lista, key=itemgetter(1))
+
+        # CONVIERTE LA LISTA EN DATAFRAME PASANDO NUEVAMENTE LOS NOMBRES DE LAS COLUMNAS
+        df_usuarios = pd.DataFrame(usuarios_cargados_lista, columns=['id', 'username', 'dni', 'password', 'email'])    
+
+        # GUARDA EL DF MODIFICADO EN UN NUEVO ARCHIVO BINARIO
+        with open('usuariosOrdenadosPorUsername.ispc', 'wb') as archivo:
+            pickle.dump(df_usuarios, archivo)
+
+        print('\nUSUARIOS ORDENADOS CON ÉXITO\n')
+        input('\nPresiona una tecla para continuar...')
+
+# FUNCION DE BUSQUEDA SECUENCIAL DE USUARIOS
+def busqueda_secuencial(dato, posColumna):
+    ''''
+    Realiza una busqueda secuencial recibiendo por parametros el "dato" a comparar
+    y la posición de la columna donde se va a busar dicho dato 
+    '''
+
+    try:
+
+        #BANDERA PARA CONTROLAR SI ENCONTRO EL REGISTRO
+        encontrado = False
+
+        # ABRE EL ARCHIVO BINARIO DE USUARIOS
+        with open('usuarios.ispc', 'rb') as archivo:
+            df_usuarios = pd.DataFrame(pickle.load(archivo))
+            
+            # CONVIERTE EL DATAFRAME EN LISTA
+            usuarios_cargados_lista = df_usuarios.values.tolist()
+
+            for u in usuarios_cargados_lista:
+                if u[posColumna] == dato:
+                    # ALMACENA EL REGISTRO SI HAY COINCIDENCIA
+                    usuario_cargado = u
+
+                    print(f'''Datos del usuario
+                            \n- ID: {usuario_cargado[0]}
+                            \n- Nombre de usuario: {usuario_cargado[1]}
+                            \n- DNI: {usuario_cargado[2]}
+                            \n- Contraseña: {usuario_cargado[3]}
+                            \n- Email: {usuario_cargado[4]}\n''')
+                    
+                    encontrado = True
+                    break
+                    
+                    
+                
+            if not encontrado:
+                # IMPRIME SI NO ENCUENTRA REGISTRO
+                print('No se encontró usuario.')
+
+        print("-" * 70)
+        print('SE REALIZO MEDIANTE BUSQUEDA SECUENCIAL')
+        print("-" * 70)
+        input('Presiona una tecla para continuar...')
+
+                                       
+    #EN CASO DE QUE NO ENCUENTRE COINCIDENCIA O NO EXISTA EL ARCHIVO MUESTRA MSJ DE ERROR
+    except:
+        print('El archivo usuarios.ispc o el usuario no existe')
+
+# FUNCION DE BUSQUEDA BINARIA DE USUARIOS
+def busqueda_binaria(dato, posColumna):
+    ''''
+    Realiza una busqueda binaria recibiendo por parametros el "dato" a comparar
+    y la posición de la columna donde se va a busar dicho dato 
+    '''
+
+    try:
+        #BANDERA PARA CONTROLAR SI ENCONTRO EL REGISTRO
+        encontrado = False
+
+        # ABRE EL ARCHIVO BINARIO DE USUARIOS
+        with open('usuariosOrdenadosPorUsername.ispc', 'rb') as archivo:
+            df_usuarios = pd.DataFrame(pickle.load(archivo))
+            
+            # CONVIERTE EL DATAFRAME EN LISTA
+            usuarios_cargados_lista = df_usuarios.values.tolist()
+
+        inicio = 0
+        fin = len(usuarios_cargados_lista) - 1 
+
+        while inicio <= fin:
+            puntero = (inicio + fin) // 2
+
+            if dato == usuarios_cargados_lista[puntero][posColumna]:
+                usuario_cargado =  usuarios_cargados_lista[puntero]
+                # PONE BANDERA EN VERDADERO
+                encontrado = True
+                break
+
+            elif dato > usuarios_cargados_lista[puntero][posColumna]:
+                inicio = puntero + 1
+
+            else:
+                fin = puntero - 1   
+
+
+        
+        if encontrado:
+            print(f'''Datos del usuario
+                    \n- ID: {usuario_cargado[0]}
+                    \n- Nombre de usuario: {usuario_cargado[1]}
+                    \n- DNI: {usuario_cargado[2]}
+                    \n- Contraseña: {usuario_cargado[3]}
+                    \n- Email: {usuario_cargado[4]}\n''')
+        
+        else:
+                # IMPRIME SI NO ENCUENTRA REGISTRO
+                print('No se encontró usuario.')
+        
+            
+        print("-" * 70)
+        print('SE REALIZO MEDIANTE BUSQUEDA BINARIA')
+        print("-" * 70)
+            
+        input('Presiona una tecla para continuar...')
+                                       
+    #EN CASO DE QUE NO ENCUENTRE COINCIDENCIA O NO EXISTA EL ARCHIVO MUESTRA MSJ DE ERROR
+    except:
+        print('El archivo usuarios.ispc o el usuario no existe')
+
 
 # FUNCION PARA VALIDADAR EMAIL
 def validar_email(msj):
@@ -36,12 +210,27 @@ def validar_email(msj):
 
     return email
 
+# FUNCION PARA VALIDADAR EXISTENCIA DE ARCHIVO
+def veriicarExistenciaArchivo(nombreArchivo):
+    '''
+    Verifica si exites un archivo pasando su nombre por parametro de tipo str y anteponiendo "/"
+    Ejemplo "/nombreArchivo"
+    retorna valor bool True/False
+    '''
+    
+    # DEFINIMOS DIRECTORIO ACTUAL DE SCRIPT PRINCIPAL
+    ubicacionMain = path.abspath(__file__)
+    directorioApp, nombre = path.split(ubicacionMain)
+
+    flag_existe = path.exists(directorioApp + nombreArchivo)
+
+    return flag_existe
 
 # FUNCION PARA AGREGAR USUARIO
 def add_user(usuario):
 
     try:
-        with open('usuarios.ispc', 'rb') as archivo:
+        with open('/app/usuarios.ispc', 'rb') as archivo:
             df_usuarios = pd.DataFrame(pickle.load(archivo))
             
             # CUANDO EXISTE EL ARCHIVO, ASIGNA VALOR PARA CUMPLIR LA CONDICION DEL IF E INCREMENTAR EL VALOR +1 
@@ -65,7 +254,7 @@ def add_user(usuario):
     # OREDENA EL DF POR DNI
     df_usuarios = df_usuarios.sort_values('dni')
 
-    with open('usuarios.ispc', 'wb') as archivo:
+    with open('/app/usuarios.ispc', 'wb') as archivo:
         pickle.dump(df_usuarios, archivo)
 
 
@@ -232,7 +421,10 @@ def buscarUsuario():
                         input('Presiona una tecla para continuar...')
                         break
                     else:
-                        usuario_cargado = df_usuarios[df_usuarios['dni'] == dato]
+                        
+                        busqueda_binaria(dato, 2) # LE PASA COMO ARGUMENTO EL DATO CARGADO Y EL 2 QUE ES EL INDICE DE LA COLUMNA DNI
+
+                        #usuario_cargado = df_usuarios[df_usuarios['dni'] == dato]
 
                         print(f'''Datos del usuario
                                 \n- ID: {usuario_cargado.to_numpy[0][0]}
@@ -304,6 +496,33 @@ def show_all_users():
 
 
 # -----------------------------  MENÚS DE OPCIONES ------------------------------------
+
+def menuOrdenarUsuario():
+    '''
+    Ordena el archivo usuarios.ispc con sorted o burbuja y crea un archivo usuariosOrdenadosPorUsername.ispc con el resultado
+    '''
+
+    while True:
+        print("-" * 80)
+        print('''ORDENAR USUARIOS POR USERNAME, ELIJA LA FORMA EN QUE DESEA ORDENARLOS\n
+              1) Técnica propia (Burbuja)\n
+              2) Ordenar por Python\n
+              3) Volver al menú anterior\n''')
+    
+        print("-" * 80)
+        option = (input("Ingrese una opcion: "))
+        print("-" * 80)
+        
+        if option == "1":
+            ordenar_burbuja()
+
+        elif option == "2":
+            ordenar_con_sorted()
+
+        elif option == "3":
+            break
+        else:
+            print("Opción inválida, intente nuevamente.")
 
 
 # PENDIENTE METER MENU DENTRO DE LA FUNCION ADD_USER Y MODIFICAR EL NOMBRE DE DICHA FUNCION
@@ -391,7 +610,7 @@ def menuOrdenarBuscarUsuarios():
 
        
         if option == "1":
-            pass
+            menuOrdenarUsuario()
         
         elif option == "2":
             buscarUsuario()
