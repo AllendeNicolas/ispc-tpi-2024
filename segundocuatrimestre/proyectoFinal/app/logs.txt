@@ -1,0 +1,3 @@
+2024-10-31 17:23:53 - Usuario: asd, Clave: qwe
+2024-10-31 17:24:56 - Usuario: probar, Clave: probar
+2024-10-31 17:25:05 - Usuario: kasdk, Clave: asdkjasdjkas
