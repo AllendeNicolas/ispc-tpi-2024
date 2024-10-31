@@ -1,0 +1,16 @@
+Búsqueda Binaria por username:
+Buscando el username ema en el archivo /usuariosOrdenadosPorUsername.ispc que contiene 6 usuarios.
+Intento 1: username del usuario de la posición 2 es lobo
+por lo tanto se buscará en la subsecuencia de la IZQUIERDA (username más chicos) (posición 0 a 1).
+Intento 2: username del usuario de la posición 0 es carlos
+por lo tanto se buscará en la subsecuencia de la derecha (username más grandes) (posición 1 a 1).
+Intento 3: username del usuario de la posición 1 es ema
+por lo tanto se encontró el usuario en 3 intentos.
+--------------------------------------------------------------------------------
+Búsqueda Binaria por username:
+Buscando el username carlos en el archivo /usuariosOrdenadosPorUsername.ispc que contiene 6 usuarios.
+Intento 1: username del usuario de la posición 2 es lobo
+por lo tanto se buscará en la subsecuencia de la IZQUIERDA (username más chicos) (posición 0 a 1).
+Intento 2: username del usuario de la posición 0 es carlos
+por lo tanto se encontró el usuario en 2 intentos.
+--------------------------------------------------------------------------------

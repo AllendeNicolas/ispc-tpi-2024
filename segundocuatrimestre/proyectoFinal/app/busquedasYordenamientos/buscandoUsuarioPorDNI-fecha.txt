@@ -17,3 +17,13 @@ por lo tanto se buscará en la subsecuencia de la IZQUIERDA (dni más chicos) (p
 Intento 3: dni del usuario de la posición 3 es 35267182.0
 por lo tanto se encontró el usuario en 3 intentos.
 --------------------------------------------------------------------------------
+Búsqueda Binaria por dni:
+Buscando el dni 12312 en el archivo /usuarios.ispc que contiene 6 usuarios.
+El dni a buscar es más CHICO que el más chico de los registrados
+No se encontró usuario.
+--------------------------------------------------------------------------------
+Búsqueda Binaria por dni:
+Buscando el dni 1233451234 en el archivo /usuarios.ispc que contiene 6 usuarios.
+El dni a buscar es más GRANDE que el más grande de los registrados
+No se encontró usuario.
+--------------------------------------------------------------------------------
