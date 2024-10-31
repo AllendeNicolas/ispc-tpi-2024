@@ -62,7 +62,6 @@
 # IMPORTAMOS LOS MODULOS
 import gestionAcceso
 import gestionUsuario
-from ingreso_sistema import menu_ingreso_sist
 from analisis_datos import menu_analisis_datos
 
 
@@ -134,7 +133,7 @@ def display_menu():
         
         # OPCIÓN 2 - INGRESAR AL SIST CON USUARIO Y CONTRASEÑA
         elif option == "2":
-            menu_ingreso_sist()
+            gestionAcceso.menuIngresoSist()
         
         # OPCIÓN 3 - ANALISIS DE DATOS, REGISTROS PLUVIALES
         elif option == "3":
