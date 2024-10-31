@@ -14,7 +14,7 @@
 	
 <h2><a href="https://github.com/AllendeNicolas/ispc-tpi-2024/tree/main/2%C2%B0%20Cuatrimestre">📂 2° Cuatrimestre</a></h2>
 	
-<p>Proyecto integrador de las materias "Programación I" y "Base de Datos II", correspondientes al 2do cuatrimestre del 1er año de la Tecnicatura en Ciencia de Datos e Inteligencia Artificial, Instituto Superior Politécnico de Córdoba. <a href="https://github.com/AllendeNicolas/ispc-tpi-2024/tree/main/2%C2%B0%20Cuatrimestre">Ver proyecto.</a></p>
+<p>Proyecto integrador de las materias "Programación I" y "Base de Datos II", correspondientes al 2do cuatrimestre del 1er año de la Tecnicatura en Ciencia de Datos e Inteligencia Artificial, Instituto Superior Politécnico de Córdoba. <a href="https://github.com/AllendeNicolas/ispc-tpi-2024/tree/main/segundocuatrimestre">Ver proyecto.</a></p>
 	
 <h3>Integrantes</h3>
 
