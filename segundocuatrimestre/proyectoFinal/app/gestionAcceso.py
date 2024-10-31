@@ -86,13 +86,13 @@ def mostrarLogsFallidos():
     except FileNotFoundError:
         print('El archivo no existe u ocurrió un error.')
 
-
+# MENÚ DE OPCIONES
 def menuDatosAccesos():
     '''
     Muestra el menú de datos de acceso y las opciones disponibles
     '''
     while True:
-        print("-" * 30 ,"DATOS DE ACCESOS","-" * 34)
+        print("-" * 30 ,"DATOS DE ACCESOS","-" * 32)
 
         print('''   
                     1) Mostrar accesos\n
@@ -110,7 +110,7 @@ def menuDatosAccesos():
             mostrarAccesos()
     
         elif option == "2":
-            pass
+            mostrarLogsFallidos()
         
         elif option == "3":
             break

@@ -76,7 +76,6 @@ def menuUsuariosAccesos():
         # IMPRIME MENÚ DE OPCIONES POR CONSOLA
         print('')
         print("-" * 25 ,"USUARIOS Y ACCESOS DE LA APP","-" * 25)
-        print("-" * 30 ,"Menú","-" * 34)
         print('''   
                     1) Acceder al CRUD de los Usuarios en POO\n
                     2) Mostrar los datos de Acceso\n
@@ -87,7 +86,7 @@ def menuUsuariosAccesos():
 
         option = (input("Ingrese una opción: "))
         
-        print("-" * 70)
+        print("-" * 80)
         
         # OPCIÓN 1 - CRUD USUARIOS POO
         if option == "1":
@@ -103,7 +102,6 @@ def menuUsuariosAccesos():
         
         # OPCIÓN 4 - VUELVE AL MENÚ PRINCIPAL
         elif option == "4":
-            print("Saliendo de la aplicación.")
             break
         else:
             print("Opción inválida, intente nuevamente.")
@@ -132,7 +130,7 @@ def display_menu():
         
         # OPCIÓN 1 - USUARIOS Y ACCESOS DE LA APP
         if option == "1":
-            pass
+            menuUsuariosAccesos()
         
         # OPCIÓN 2 - INGRESAR AL SIST CON USUARIO Y CONTRASEÑA
         elif option == "2":
