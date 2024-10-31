@@ -211,7 +211,7 @@ def validar_email(msj):
     return email
 
 # FUNCION PARA VALIDADAR EXISTENCIA DE ARCHIVO
-def veriicarExistenciaArchivo(nombreArchivo):
+def verificarExistenciaArchivo(nombreArchivo):
     '''
     Verifica si exites un archivo pasando su nombre por parametro de tipo str y anteponiendo "/"
     Ejemplo "/nombreArchivo"
@@ -394,8 +394,9 @@ def eliminarUsuarioConMenu():
 
 # FUNCION PARA BUSCAR USUARIO
 def buscarUsuario():
-    # ABRE EL ARCHIVO BINARIO DE USUARIOS
+    
     try:
+        # ABRE EL ARCHIVO BINARIO DE USUARIOS
         with open('usuarios.ispc', 'rb') as archivo:
             df_usuarios = pd.DataFrame(pickle.load(archivo))
             
@@ -423,31 +424,15 @@ def buscarUsuario():
                     else:
                         
                         busqueda_binaria(dato, 2) # LE PASA COMO ARGUMENTO EL DATO CARGADO Y EL 2 QUE ES EL INDICE DE LA COLUMNA DNI
-
-                        #usuario_cargado = df_usuarios[df_usuarios['dni'] == dato]
-
-                        print(f'''Datos del usuario
-                                \n- ID: {usuario_cargado.to_numpy[0][0]}
-                                \n- Nombre de usuario: {usuario_cargado.to_numpy()[0][1]}
-                                \n- DNI: {usuario_cargado.to_numpy()[0][2]}
-                                \n- Contraseña: {usuario_cargado.to_numpy()[0][3]}
-                                \n- Email: {usuario_cargado.to_numpy()[0][4]}\n''')
-                        
-                        input('Presiona una tecla para continuar...')
                         break
 
                 elif opcion == '2':
                     dato = input('Ingresa el nombre de usuario:')
-                    usuario_cargado = df_usuarios[df_usuarios['username'] == dato]
 
-                    print(f'''Datos del usuario
-                                \n- ID: {usuario_cargado.to_numpy[0][0]}
-                                \n- Nombre de usuario: {usuario_cargado.to_numpy()[0][1]}
-                                \n- DNI: {usuario_cargado.to_numpy()[0][2]}
-                                \n- Contraseña: {usuario_cargado.to_numpy()[0][3]}
-                                \n- Email: {usuario_cargado.to_numpy()[0][4]}\n''')
-                    
-                    input('Presiona una tecla para continuar...')
+                    if verificarExistenciaArchivo('/usuariosOrdenadosPorUsername.ispc'):
+                        busqueda_binaria(dato, 1)                    
+                    else:
+                        busqueda_secuencial(dato, 1)
                     break
 
                 elif opcion == '3':
