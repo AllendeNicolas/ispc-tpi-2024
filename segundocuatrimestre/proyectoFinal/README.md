@@ -67,9 +67,38 @@ Carlos Direni - 28.117.281 - direnicarlos@gmail.com - https://github.com/Cdireni
 
 <hr/>
 
-<p>En el repositorio, específicamente dentro de la carpeta  segundo cuatrimestre, la carpeta Evidencia 3, que contiene un sub-archivo denominado app, con lo solicitado para cumplir los requisitos de la Evidencia 3, del módulo de Innovación y gestión de Base de Datos. Aquí se encuentran los archivos que continuan con lo solicitado en la Evidencia2, con las correcciones correspondientes, que habian quedado por resolver para esta evidencia. (accesos_funciones.py, crud_usuarios.py, loggedin.py, main.py, menu_evidencia2.py, ordenamiento_busqueda.py, registros_pluviales.py).
- 
- en el caso de registros_pluviales.py, la aplicación funciona correctamente, sólo debe cerrar las ventanas emergentes con los gráficos, para que muestre el siguiente gráfico con los registros.<p/>
+<h4 id="aplicacion"> 📂 Carpeta <code>app</code></h4>
+
+<p>Contiene los archivos:</p>
+
+#### `main.py`
+
+<p>Este archivo contiene el punto de entrada de la aplicación y la función principal, que maneja el menú y las opciones del usuario.</p>
+
+#### `analisis_datos.py`
+
+<p>Agregar descripcion de lo que contiene.</p>
+
+#### `gestionAcceso.py`
+
+<p>Acá se encuentra el módulo de acceso a las funciones referentes a la Gestión de Usuarios y contraseñas.</p>
+
+#### `gestionUsuario.py`
+
+<p>Aquí se encuentra lo referido al módulo de ordenamiento, y las funciones específicas de la Gestión de Usuarios.</p>
+
+#### `ingreso_sistema.py`
+
+<p>Aquí se encuentra el módulo y funciones referidas al Backend y la Base de Datos del Proyecto.</p>
+
+#### `REGISTROS PLUVIALES`
+
+<p>Agregar descripcion de lo que contiene.</p>
+
+
+
+
+<p> en el caso de registros_pluviales.py, la aplicación funciona correctamente, sólo debe cerrar las ventanas emergentes con los gráficos, para que muestre el siguiente gráfico con los registros.<p/>
 
 <hr/>
 
