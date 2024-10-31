@@ -3,6 +3,7 @@ import pandas as pd
 import re
 from operator import itemgetter
 import os.path as path
+from datetime import datetime
 
 
 # DEFINIMOS DIRECTORIO ACTUAL DE SCRIPT PRINCIPAL
@@ -144,15 +145,17 @@ def crearArchivoRegistroBusquedasBin(columna, registro):
     '''
 
     columnas = ('id', 'username', 'dni', 'password', 'email')
+    fecha = datetime.now().strftime('%Y-%m-%d %Hh %Mm %Ss')
+    print(str(fecha))
 
     try:
         if columna == 'dni':
-            with open(directorioApp + '/busquedasYordenamientos/buscandoUsuarioPorDNI-fecha.txt', 'a', encoding='utf-8') as archivo:
+            with open(directorioApp + f'/busquedasYordenamientos/buscandoUsuarioPorDNI-{fecha}.txt', 'a', encoding='utf-8') as archivo:
                 archivo.write(registro + '\n')
 
         
         elif columna == 'username':
-            with open(directorioApp + '/busquedasYordenamientos/buscandoUsuarioPorUsername-fecha.txt', 'a', encoding='utf-8') as archivo:
+            with open(directorioApp + f'/busquedasYordenamientos/buscandoUsuarioPorUsername-{fecha}.txt', 'a', encoding='utf-8') as archivo:
                 archivo.write(registro + '\n')
 
         else:
