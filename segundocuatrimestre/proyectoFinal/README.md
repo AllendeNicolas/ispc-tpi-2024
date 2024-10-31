@@ -97,7 +97,6 @@ Carlos Direni - 28.117.281 - direnicarlos@gmail.com - https://github.com/Cdireni
 
 
 
-
 <p> en el caso de registros_pluviales.py, la aplicación funciona correctamente, sólo debe cerrar las ventanas emergentes con los gráficos, para que muestre el siguiente gráfico con los registros.<p/>
 
 <hr/>
@@ -160,6 +159,6 @@ Carlos Direni - 28.117.281 - direnicarlos@gmail.com - https://github.com/Cdireni
 <p> 3) Ingresar los datos según corresponda.</p>
 
 <hr/> 
-<h3> Link Evidencia 3</h3>
-<p align="center"><a href= https://github.com/AllendeNicolas/ispc-tpi-2024/tree/main/segundocuatrimestre/evidencia3><strong>Ver Evidencia 2 »</strong></a></p>
+<h3> Link PROYECTO INTEGRADOR FINAL</h3>
+<p align="center"><a href= https://github.com/AllendeNicolas/ispc-tpi-2024/tree/main/segundocuatrimestre/proyectoFinal><strong>Ver Proyecto Final Data Human´s»</strong></a></p>
 
