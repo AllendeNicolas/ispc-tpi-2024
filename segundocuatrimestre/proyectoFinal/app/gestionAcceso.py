@@ -77,7 +77,7 @@ def control_acceso(username, password):
 
 def mostrarAccesos():
     try:
-        with open('accesos.ispc', 'rb') as archivo:
+        with open(directorioApp + '/accesos.ispc', 'rb') as archivo:
             accesos = pickle.load(archivo)
     except FileNotFoundError:
         print('El archivo no existe u ocurrió un error.')
@@ -89,7 +89,7 @@ def mostrarAccesos():
 
 def mostrarLogsFallidos():
     try:
-        with open('logs.txt', 'r') as archivo:
+        with open(directorioApp + '/logs.txt', 'r') as archivo:
             print("-" * 30 ,"INTENTOS FALLIDOS","-" * 34)
             for linea in archivo:
                 print(linea)
