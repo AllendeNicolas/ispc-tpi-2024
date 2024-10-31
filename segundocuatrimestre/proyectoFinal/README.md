@@ -5,7 +5,7 @@
 <div id="top"></div>
 
 <div align="center">
-<h3 align="center">Evidencia 3: Ordenamiento y registros, con Pandas y Matplotlib en Python (archivos de texto y binarios), y Modificacones en Base de Datos MySQL:.</h3>
+<h3 align="center">Proyecto Final: espacio curricular: Innovación en gestión de datos - ISPC</h3>
  <p align="center">
      Proyecto: DATA  HUMAN´S
     <br />
