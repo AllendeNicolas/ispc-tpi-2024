@@ -58,7 +58,7 @@ def ordenar_burbuja():
             pickle.dump(df_usuarios, archivo)
         
         print('\nUSUARIOS ORDENADOS CON ÉXITO\n')
-        input('\nPresiona una tecla para continuar...')
+        input('\nPresiona ENTER para continuar...')
 
 
 # FUNCION DE ORDENAMIENTO USANDO LIBRERIA DE PYTHON
@@ -85,7 +85,7 @@ def ordenar_con_sorted():
             pickle.dump(df_usuarios, archivo)
 
         print('\nUSUARIOS ORDENADOS CON ÉXITO\n')
-        input('\nPresiona una tecla para continuar...')
+        input('\nPresiona ENTER para continuar...')
 
 # FUNCION DE BUSQUEDA SECUENCIAL DE USUARIOS
 def busqueda_secuencial(dato, posColumna):
@@ -99,14 +99,20 @@ def busqueda_secuencial(dato, posColumna):
         #BANDERA PARA CONTROLAR SI ENCONTRO EL REGISTRO
         encontrado = False
 
+        contadorIntentos = 0
+
         # ABRE EL ARCHIVO BINARIO DE USUARIOS
         with open(directorioApp + '/usuarios.ispc', 'rb') as archivo:
             df_usuarios = pd.DataFrame(pickle.load(archivo))
+
+            print(f'Buscando el {df_usuarios.columns[posColumna]} “{dato}” ')
             
             # CONVIERTE EL DATAFRAME EN LISTA
             usuarios_cargados_lista = df_usuarios.values.tolist()
 
             for u in usuarios_cargados_lista:
+                contadorIntentos += 1
+
                 if u[posColumna] == dato:
                     # ALMACENA EL REGISTRO SI HAY COINCIDENCIA
                     usuario_cargado = u
@@ -121,7 +127,9 @@ def busqueda_secuencial(dato, posColumna):
                     encontrado = True
                     break
                     
-                    
+                else:
+                    print(f'Intento {contadorIntentos}: {dato} es distinto a {u[posColumna]}')
+                
                 
             if not encontrado:
                 # IMPRIME SI NO ENCUENTRA REGISTRO
@@ -130,7 +138,7 @@ def busqueda_secuencial(dato, posColumna):
         print("-" * 70)
         print('SE REALIZO MEDIANTE BUSQUEDA SECUENCIAL')
         print("-" * 70)
-        input('Presiona una tecla para continuar...')
+        input('\nPresiona ENTER para continuar...')
 
                                        
     #EN CASO DE QUE NO ENCUENTRE COINCIDENCIA O NO EXISTA EL ARCHIVO MUESTRA MSJ DE ERROR
@@ -161,7 +169,8 @@ def crearArchivoRegistroBusquedasBin(columna, registro):
         else:
             print('El nombre de la columna ingresada es incorrecto.')
     except:
-        print('ERROR "crearArchivoRegistroBusquedasBin": es directorio donde se desea crear el archivo no existe.')
+        print('ERROR "crearArchivoRegistroBusquedasBin": el directorio donde se desea crear el archivo no existe.')
+        input('\nPresiona ENTER para continuar...')
 
 
 # FUNCION DE BUSQUEDA BINARIA DE USUARIOS
@@ -247,7 +256,7 @@ def busqueda_binaria(dato, posColumna, nombreArchivo):
         print('SE REALIZO MEDIANTE BUSQUEDA BINARIA')
         print("-" * 70)
             
-        input('Presiona una tecla para continuar...')
+        input('\nPresiona ENTER para continuar...')
                                        
     #EN CASO DE QUE NO ENCUENTRE COINCIDENCIA O NO EXISTA EL ARCHIVO MUESTRA MSJ DE ERROR
     except:
@@ -418,6 +427,7 @@ def eliminarUsuarioConMenu():
                     with open(directorioApp + '/usuarios.ispc', 'wb') as archivo:
                         pickle.dump(df_usuarios, archivo)
                     print('El usuario se eliminó con exito')
+                    input('\nPresiona ENTER para continuar...')
 
                     break
 
@@ -435,6 +445,7 @@ def eliminarUsuarioConMenu():
                     with open(directorioApp + '/usuarios.ispc', 'wb') as archivo:
                         pickle.dump(df_usuarios, archivo)
                     print('El usuario se eliminó con exito')
+                    input('\nPresiona ENTER para continuar...')
 
                     break
 
@@ -477,7 +488,7 @@ def buscarUsuario():
                         dato = int(input('Ingresa el DNI:'))
                     except:
                         print('Dato incorrecto, vuelve a intentarlo')
-                        input('Presiona una tecla para continuar...')
+                        input('\nPresiona ENTER para continuar...')
                         
                     else:
                         
@@ -530,11 +541,11 @@ def show_all_users(nombreArchivo):
         with open(directorioApp + nombreArchivo, 'rb') as archivo:
             df_usuarios = pickle.load(archivo)
             print(df_usuarios)
-        input('\nPresiona una tecla para continuar...')
+        input('\nPresiona ENTER para continuar...')
         
     except:
         print(f'El archivo {nombreArchivo} no existe')
-        input('\nPresiona una tecla para continuar...')
+        input('\nPresiona ENTER para continuar...')
 
 
 

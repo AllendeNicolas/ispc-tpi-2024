@@ -54,6 +54,7 @@ def registrarAcceso(username):
     
     except Exception as e:
         print(f"Error al registrar acceso: {e}")
+        input('\nPresiona ENTER para continuar...')
 
 # Función para registrar intentos fallidos
 def registrar_intento_fallido(username, password):
@@ -85,6 +86,7 @@ def mostrarAccesos():
     else:
         print("-" * 30 ,"REGISTROS DE ACCESOS","-" * 34)
         print(accesos)
+        input('\nPresiona ENTER para continuar...')
 
 
 def mostrarLogsFallidos():
@@ -93,6 +95,8 @@ def mostrarLogsFallidos():
             print("-" * 30 ,"INTENTOS FALLIDOS","-" * 34)
             for linea in archivo:
                 print(linea)
+        input('\nPresiona ENTER para continuar...')
+        
     except FileNotFoundError:
         print('El archivo no existe u ocurrió un error.')
 
@@ -162,6 +166,7 @@ def menuIngresoSist():
             
             # OPCIÓN 1 - 
             if option == "1":
+                #menuBaseDatos()
                 pass
             
             # OPCIÓN 2 - VUELVE AL MENÚ PRINCIPAL
