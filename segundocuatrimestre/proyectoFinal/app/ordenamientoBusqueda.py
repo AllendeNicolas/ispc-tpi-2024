@@ -68,7 +68,10 @@ def ordenar_con_sorted():
 
 
 def ordenarUsuario():
-    
+    '''
+    Ordena el archivo usuarios.ispc con sorted o burbuja y crea un archivo usuariosOrdenadosPorUsername.ispc con el resultado
+    '''
+
     while True:
         print("-" * 80)
         print('''ORDENAR USUARIOS POR USERNAME, ELIJA LA FORMA EN QUE DESEA ORDENARLOS\n
@@ -82,21 +85,22 @@ def ordenarUsuario():
         
         if option == "1":
             ordenar_burbuja()
-            flag = True
 
         elif option == "2":
             ordenar_con_sorted()
-            flag = True
 
         elif option == "3":
             break
         else:
             print("Opción inválida, intente nuevamente.")
 
-        return flag
 
+def busqueda_secuencial(dato, posColumna):
+    ''''
+    Realiza una busqueda secuencial recibiendo por parametros el "dato" a comparar
+    y la posición de la columna donde se va a busar dicho dato 
+    '''
 
-def busqueda_secuencial(valor):
     try:
 
         #BANDERA PARA CONTROLAR SI ENCONTRO EL REGISTRO
@@ -110,17 +114,19 @@ def busqueda_secuencial(valor):
             usuarios_cargados_lista = df_usuarios.values.tolist()
 
             for u in usuarios_cargados_lista:
-                if u[0] == valor:
+                if u[posColumna] == dato:
                     # ALMACENA EL REGISTRO SI HAY COINCIDENCIA
                     usuario_cargado = u
 
                     print(f'''Datos del usuario
-                            \n- ID: {(df_usuarios[df_usuarios['username'] == usuario_cargado[0]].index).to_numpy()[0]}
-                            \n- Nombre de usuario: {usuario_cargado[0]}
-                            \n- Contraseña: {usuario_cargado[1]}
-                            \n- Email: {usuario_cargado[2]}\n''')
+                            \n- ID: {usuario_cargado[0]}
+                            \n- Nombre de usuario: {usuario_cargado[1]}
+                            \n- DNI: {usuario_cargado[2]}
+                            \n- Contraseña: {usuario_cargado[3]}
+                            \n- Email: {usuario_cargado[4]}\n''')
                     
                     encontrado = True
+                    break
                     
                     
                 
@@ -139,14 +145,18 @@ def busqueda_secuencial(valor):
         print('El archivo usuarios.ispc o el usuario no existe')
 
 
-def busqueda_binaria(valor):
+def busqueda_binaria(dato, posColumna):
+    ''''
+    Realiza una busqueda binaria recibiendo por parametros el "dato" a comparar
+    y la posición de la columna donde se va a busar dicho dato 
+    '''
 
     try:
         #BANDERA PARA CONTROLAR SI ENCONTRO EL REGISTRO
         encontrado = False
 
         # ABRE EL ARCHIVO BINARIO DE USUARIOS
-        with open('usuarios.ispc', 'rb') as archivo:
+        with open('usuariosOrdenadosPorUsername.ispc', 'rb') as archivo:
             df_usuarios = pd.DataFrame(pickle.load(archivo))
             
             # CONVIERTE EL DATAFRAME EN LISTA
@@ -158,13 +168,13 @@ def busqueda_binaria(valor):
         while inicio <= fin:
             puntero = (inicio + fin) // 2
 
-            if valor == usuarios_cargados_lista[puntero][0]:
+            if dato == usuarios_cargados_lista[puntero][posColumna]:
                 usuario_cargado =  usuarios_cargados_lista[puntero]
                 # PONE BANDERA EN VERDADERO
                 encontrado = True
                 break
 
-            elif valor > usuarios_cargados_lista[puntero][0]:
+            elif dato > usuarios_cargados_lista[puntero][posColumna]:
                 inicio = puntero + 1
 
             else:
