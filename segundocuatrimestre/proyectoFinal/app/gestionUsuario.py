@@ -136,6 +136,31 @@ def busqueda_secuencial(dato, posColumna):
     except:
         print('El archivo usuarios.ispc o el usuario no existe')
 
+# FUNCION PARA CREAR LOS REGISTROS DE BUSQUEDAS BINARIAS
+def crearArchivoRegistroBusquedasBin(columna, registro):
+    '''
+    Crea los archivos de registros de  busquedas binarias: "/busquedasYordenamientos/buscandoUsuarioPorDNI-fecha.ispc" y 
+    "/busquedasYordenamientos/buscandoUsuarioPorUsername-fecha.txt"recibiendo por parametro el nombre de la columna "dni" o "username"
+    '''
+
+    columnas = ('id', 'username', 'dni', 'password', 'email')
+
+    try:
+        if columna == 'dni':
+            with open(directorioApp + '/busquedasYordenamientos/buscandoUsuarioPorDNI-fecha.txt', 'a', encoding='utf-8') as archivo:
+                archivo.write(registro + '\n')
+
+        
+        elif columna == 'username':
+            with open(directorioApp + '/busquedasYordenamientos/buscandoUsuarioPorUsername-fecha.txt', 'a', encoding='utf-8') as archivo:
+                archivo.write(registro + '\n')
+
+        else:
+            print('El nombre de la columna ingresada es incorrecto.')
+    except:
+        print('ERROR "crearArchivoRegistroBusquedasBin": es directorio donde se desea crear el archivo no existe.')
+
+
 # FUNCION DE BUSQUEDA BINARIA DE USUARIOS
 def busqueda_binaria(dato, posColumna, nombreArchivo):
     ''''
@@ -157,31 +182,57 @@ def busqueda_binaria(dato, posColumna, nombreArchivo):
 
         inicio = 0
         fin = len(usuarios_cargados_lista) - 1 
+        contadoIntentos = 0
+
+        #    USAR ESTA INFORMACION PARA REGISTRAR EN ARCHIVO DE REGISTROS ***************************************************************************************************
+        print('-'*80)
+        crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], f'Búsqueda Binaria por {df_usuarios.columns[posColumna]}:')
+        crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], f'Buscando el {df_usuarios.columns[posColumna]} {dato} en el archivo {nombreArchivo} que contiene {len(usuarios_cargados_lista)} usuarios.')
 
         while inicio <= fin:
+            contadoIntentos += 1
             puntero = (inicio + fin) // 2
 
-            # MUESTRA COMPARACIONES PARA TESTEO
-            print('-'*80)
-            print(dato, 'vs', usuarios_cargados_lista[puntero][posColumna])
-            print('')
-            print('inicio ', inicio, ' - fin ', fin)
-            print('')
-            print('puntero ', puntero)
+            if dato < usuarios_cargados_lista[0][posColumna]:
 
+                # USAR ESTA INFORMACION PARA REGISTRAR EN ARCHIVO DE REGISTROS ***************************************************************************************************
+                crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], f'El {df_usuarios.columns[posColumna]} a buscar es más CHICO que el más chico de los registrados')
+                
+                break
 
+            elif dato > usuarios_cargados_lista[-1][posColumna]:
+                # USAR ESTA INFORMACION PARA REGISTRAR EN ARCHIVO DE REGISTROS ***************************************************************************************************
+                crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], f'El {df_usuarios.columns[posColumna]} a buscar es más GRANDE que el más grande de los registrados')
+                
+                break
+
+            #    USAR ESTA INFORMACION PARA REGISTRAR EN ARCHIVO DE REGISTROS ***************************************************************************************************
+            crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], f'Intento {contadoIntentos}: {df_usuarios.columns[posColumna]} del usuario de la posición {puntero} es {usuarios_cargados_lista[puntero][posColumna]}')
 
             if dato == usuarios_cargados_lista[puntero][posColumna]:
+
+                # USAR ESTA INFORMACION PARA REGISTRAR EN ARCHIVO DE REGISTROS ***************************************************************************************************
+                crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], f'por lo tanto se encontró el usuario en {contadoIntentos} intentos.')
+                crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], '-'*80)
+
                 usuario_cargado =  usuarios_cargados_lista[puntero]
                 # PONE BANDERA EN VERDADERO
                 encontrado = True
                 break
 
             elif dato > usuarios_cargados_lista[puntero][posColumna]:
+
                 inicio = puntero + 1
+                
+                # USAR ESTA INFORMACION PARA REGISTRAR EN ARCHIVO DE REGISTROS ***************************************************************************************************
+                crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], f'''por lo tanto se buscará en la subsecuencia de la derecha ({df_usuarios.columns[posColumna]} más grandes) (posición {inicio} a {fin}).''')
+
 
             else:
-                fin = puntero - 1   
+                fin = puntero - 1
+                
+                # USAR ESTA INFORMACION PARA REGISTRAR EN ARCHIVO DE REGISTROS ***************************************************************************************************
+                crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], f'por lo tanto se buscará en la subsecuencia de la IZQUIERDA ({df_usuarios.columns[posColumna]} más chicos) (posición {inicio} a {fin}).')
 
 
         
@@ -196,7 +247,8 @@ def busqueda_binaria(dato, posColumna, nombreArchivo):
         else:
                 # IMPRIME SI NO ENCUENTRA REGISTRO
                 print('No se encontró usuario.')
-        
+                crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], 'No se encontró usuario.')
+                crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], '-'*80)
             
         print("-" * 70)
         print('SE REALIZO MEDIANTE BUSQUEDA BINARIA')
@@ -365,7 +417,7 @@ def eliminarUsuarioConMenu():
 
 
                     print(f'''Datos del usuario
-                            \n- Nombre de usuario: {usuario_cargado.to_numpy()[0][0]}
+                            \n- Nombre de usuario: {usuario_cargado.to_numpy()[0][1]}
                             \n- Email: {usuario_cargado.to_numpy()[0][2]}\n''')
                     
                     df_usuarios = df_usuarios.drop(usuario_cargado.index)
@@ -625,4 +677,4 @@ def menuOrdenarBuscarUsuarios():
 
 #menuOrdenarBuscarUsuarios()
 
-buscarUsuario()
+#buscarUsuario()
