@@ -98,7 +98,7 @@ def menuUsuariosAccesos():
         
         # OPCIÓN 3 - ORDENAMIENTO Y BUSQUEDA DE USUSARIOS
         elif option == "3":
-            pass
+            gestionUsuario.menuOrdenarBuscarUsuarios()
         
         # OPCIÓN 4 - VUELVE AL MENÚ PRINCIPAL
         elif option == "4":
@@ -119,7 +119,7 @@ def display_menu():
         print('''   
                     1) Usuarios y Accesos de la Aplicación\n
                     2) Ingresar al sistema con los datos de usuario (GBD)\n
-                    3)  Análisis de datos\n
+                    3) Análisis de datos\n
                     4) Salir\n''')
         
         print("-" * 80)
