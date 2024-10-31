@@ -125,7 +125,7 @@ Carlos Direni - 28.117.281 - direnicarlos@gmail.com - https://github.com/Cdireni
 - datahumans_bd_dataonly_actualizada.sql
 <p>Contiene únicamente los datos  correspondientes al esquema.</p>
 
-<p> En el mismo archivero -bd-, se encuentra también:</p>
+<p> 📂 En el mismo archivero -bd-, se encuentra también:</p>
 
 - consultas.sql
 <p>En este archivo se encuentran diferentes consultas para hacer sobre la base de datos, que se utilizarán en backend.</p>
