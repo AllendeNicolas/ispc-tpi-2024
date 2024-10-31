@@ -2,6 +2,12 @@ import pickle
 import pandas as pd
 import re
 from operator import itemgetter
+import os.path as path
+
+
+# DEFINIMOS DIRECTORIO ACTUAL DE SCRIPT PRINCIPAL
+ubicacionMain = path.abspath(__file__)
+directorioApp, nombre = path.split(ubicacionMain)
 
 class Usuario:
     def __init__(self, username, dni, password, email):
@@ -93,7 +99,7 @@ def busqueda_secuencial(dato, posColumna):
         encontrado = False
 
         # ABRE EL ARCHIVO BINARIO DE USUARIOS
-        with open('usuarios.ispc', 'rb') as archivo:
+        with open(directorioApp + '/usuarios.ispc', 'rb') as archivo:
             df_usuarios = pd.DataFrame(pickle.load(archivo))
             
             # CONVIERTE EL DATAFRAME EN LISTA
@@ -131,10 +137,11 @@ def busqueda_secuencial(dato, posColumna):
         print('El archivo usuarios.ispc o el usuario no existe')
 
 # FUNCION DE BUSQUEDA BINARIA DE USUARIOS
-def busqueda_binaria(dato, posColumna):
+def busqueda_binaria(dato, posColumna, nombreArchivo):
     ''''
-    Realiza una busqueda binaria recibiendo por parametros el "dato" a comparar
-    y la posición de la columna donde se va a busar dicho dato 
+    Realiza una busqueda binaria recibiendo por parametros el "dato" a comparar, 
+    la posición de la columna donde se va a busar dicho dato y el nombre del archivo binario anteponiendo "/"
+    Ejemplo "/nombreArchivo"
     '''
 
     try:
@@ -142,7 +149,7 @@ def busqueda_binaria(dato, posColumna):
         encontrado = False
 
         # ABRE EL ARCHIVO BINARIO DE USUARIOS
-        with open('usuariosOrdenadosPorUsername.ispc', 'rb') as archivo:
+        with open(directorioApp + nombreArchivo, 'rb') as archivo:
             df_usuarios = pd.DataFrame(pickle.load(archivo))
             
             # CONVIERTE EL DATAFRAME EN LISTA
@@ -153,6 +160,16 @@ def busqueda_binaria(dato, posColumna):
 
         while inicio <= fin:
             puntero = (inicio + fin) // 2
+
+            # MUESTRA COMPARACIONES PARA TESTEO
+            print('-'*80)
+            print(dato, 'vs', usuarios_cargados_lista[puntero][posColumna])
+            print('')
+            print('inicio ', inicio, ' - fin ', fin)
+            print('')
+            print('puntero ', puntero)
+
+
 
             if dato == usuarios_cargados_lista[puntero][posColumna]:
                 usuario_cargado =  usuarios_cargados_lista[puntero]
@@ -217,10 +234,6 @@ def verificarExistenciaArchivo(nombreArchivo):
     Ejemplo "/nombreArchivo"
     retorna valor bool True/False
     '''
-    
-    # DEFINIMOS DIRECTORIO ACTUAL DE SCRIPT PRINCIPAL
-    ubicacionMain = path.abspath(__file__)
-    directorioApp, nombre = path.split(ubicacionMain)
 
     flag_existe = path.exists(directorioApp + nombreArchivo)
 
@@ -230,7 +243,7 @@ def verificarExistenciaArchivo(nombreArchivo):
 def add_user(usuario):
 
     try:
-        with open('/app/usuarios.ispc', 'rb') as archivo:
+        with open((directorioApp + '/usuarios.ispc'), 'rb') as archivo:
             df_usuarios = pd.DataFrame(pickle.load(archivo))
             
             # CUANDO EXISTE EL ARCHIVO, ASIGNA VALOR PARA CUMPLIR LA CONDICION DEL IF E INCREMENTAR EL VALOR +1 
@@ -254,7 +267,7 @@ def add_user(usuario):
     # OREDENA EL DF POR DNI
     df_usuarios = df_usuarios.sort_values('dni')
 
-    with open('/app/usuarios.ispc', 'wb') as archivo:
+    with open(directorioApp + '/usuarios.ispc', 'wb') as archivo:
         pickle.dump(df_usuarios, archivo)
 
 
@@ -265,7 +278,7 @@ def modificarUsuarioConMenu():
     try:
         usuario = input('Ingresa el username a modificar:')
 
-        with open('usuarios.ispc', 'rb') as archivo:
+        with open(directorioApp + '/usuarios.ispc', 'rb') as archivo:
             df_usuarios = pd.DataFrame(pickle.load(archivo))
         
         usuario_cargado = df_usuarios[df_usuarios['username'] == usuario]
@@ -316,7 +329,7 @@ def modificarUsuarioConMenu():
 
             elif opcion == '5':
                 # GUARDA EL DF MODIFICADO EN EL ARCHIVO BINARIO REEMPLAZANDO EL CONTENIDO ANTERIOR 
-                with open('usuarios.ispc', 'wb') as archivo:
+                with open(directorioApp + '/usuarios.ispc', 'wb') as archivo:
                     pickle.dump(df_usuarios, archivo)
         
                 break
@@ -330,7 +343,7 @@ def eliminarUsuarioConMenu():
 
     # ABRE EL ARCHIVO BINARIO DE USUARIOS
     try:
-        with open('usuarios.ispc', 'rb') as archivo:
+        with open(directorioApp + '/usuarios.ispc', 'rb') as archivo:
             df_usuarios = pd.DataFrame(pickle.load(archivo))
             
             while True:
@@ -357,7 +370,7 @@ def eliminarUsuarioConMenu():
                     
                     df_usuarios = df_usuarios.drop(usuario_cargado.index)
                     # GUARDA EL DF MODIFICADO EN EL ARCHIVO BINARIO REEMPLAZANDO EL CONTENIDO ANTERIOR 
-                    with open('usuarios.ispc', 'wb') as archivo:
+                    with open(directorioApp + '/usuarios.ispc', 'wb') as archivo:
                         pickle.dump(df_usuarios, archivo)
                     print('El usuario se eliminó con exito')
 
@@ -374,7 +387,7 @@ def eliminarUsuarioConMenu():
                     
                     df_usuarios = df_usuarios.drop(usuario_cargado.index)
                     # GUARDA EL DF MODIFICADO EN EL ARCHIVO BINARIO REEMPLAZANDO EL CONTENIDO ANTERIOR 
-                    with open('usuarios.ispc', 'wb') as archivo:
+                    with open(directorioApp + '/usuarios.ispc', 'wb') as archivo:
                         pickle.dump(df_usuarios, archivo)
                     print('El usuario se eliminó con exito')
 
@@ -397,7 +410,7 @@ def buscarUsuario():
     
     try:
         # ABRE EL ARCHIVO BINARIO DE USUARIOS
-        with open('usuarios.ispc', 'rb') as archivo:
+        with open(directorioApp + '/usuarios.ispc', 'rb') as archivo:
             df_usuarios = pd.DataFrame(pickle.load(archivo))
             
             while True:
@@ -420,34 +433,33 @@ def buscarUsuario():
                     except:
                         print('Dato incorrecto, vuelve a intentarlo')
                         input('Presiona una tecla para continuar...')
-                        break
+                        
                     else:
                         
-                        busqueda_binaria(dato, 2) # LE PASA COMO ARGUMENTO EL DATO CARGADO Y EL 2 QUE ES EL INDICE DE LA COLUMNA DNI
-                        break
+                        busqueda_binaria(dato, 2, '/usuarios.ispc') # LE PASA COMO ARGUMENTO EL DATO CARGADO Y EL 2 QUE ES EL INDICE DE LA COLUMNA DNI
+                        
 
                 elif opcion == '2':
                     dato = input('Ingresa el nombre de usuario:')
 
                     if verificarExistenciaArchivo('/usuariosOrdenadosPorUsername.ispc'):
-                        busqueda_binaria(dato, 1)                    
+                        busqueda_binaria(dato, 1, '/usuariosOrdenadosPorUsername.ispc')                    
                     else:
                         busqueda_secuencial(dato, 1)
-                    break
 
                 elif opcion == '3':
                     dato = validar_email('Ingresa el email:')
                     busqueda_secuencial(dato, 4)
-                    break
+
                 
                 elif opcion == '4':
                     print("-" * 30 ,"MOSTRAR TODOS LOS USUARIOS REGISTRADOS","-" * 34)
 
-                    print("-" * 30 ,"\nUSUARIOS REGISTRADOS EN 'usuarios.ispc'","-" * 34)
-                    show_all_users('usuarios.ispc')
+                    print("\n", "-" * 30 ,"\nUSUARIOS REGISTRADOS EN 'usuarios.ispc'","-" * 34)
+                    show_all_users('/usuarios.ispc')
 
-                    print("-" * 30 ,"\nUSUARIOS REGISTRADOS EN 'usuariosOrdenadosPorUsername.ispc'","-" * 34)
-                    show_all_users('usuariosOrdenadosPorUsername.ispc')
+                    print("\n", "-" * 30 ,"USUARIOS REGISTRADOS EN 'usuariosOrdenadosPorUsername.ispc'","-" * 34)
+                    show_all_users('/usuariosOrdenadosPorUsername.ispc')
 
                 elif opcion == '5':
                     break
@@ -466,16 +478,18 @@ def buscarUsuario():
 def show_all_users(nombreArchivo):
     '''
     Muestra el contenido de los archivos binarios de registros de usuarios
-    Recibe como parametro el nombre del archivo con tipo srt
+    Recibe como parametro el nombre del archivo con tipo srt anteponiendo "/"
+    Ejemplo "/nombreArchivo"
     '''
     try:
-        with open(nombreArchivo, 'rb') as archivo:
+        with open(directorioApp + nombreArchivo, 'rb') as archivo:
             df_usuarios = pickle.load(archivo)
             print(df_usuarios)
-        input('Presiona una tecla para continuar...')
+        input('\nPresiona una tecla para continuar...')
         
     except:
         print(f'El archivo {nombreArchivo} no existe')
+        input('\nPresiona una tecla para continuar...')
 
 
 
@@ -573,6 +587,7 @@ def menuCrudUsuarios():
 
 
 def menuOrdenarBuscarUsuarios():
+
     '''
     Muestra el menú de ordenamiento y busqueda de usuarios y las opciones disponibles
     '''
@@ -603,3 +618,11 @@ def menuOrdenarBuscarUsuarios():
             break
         else:
             print("Opción inválida, intente nuevamente.")
+
+
+
+#menuRegistrarUsuario()
+
+#menuOrdenarBuscarUsuarios()
+
+buscarUsuario()
