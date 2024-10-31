@@ -1,6 +1,12 @@
 import pandas as pd
 import pickle
 from datetime import datetime
+import os.path as path
+
+# DEFINIMOS DIRECTORIO ACTUAL DE SCRIPT PRINCIPAL
+ubicacionMain = path.abspath(__file__)
+directorioApp, nombre = path.split(ubicacionMain)
+
 
 # APLICAR LA CLASE A LOS REGISTROS DE ACCESOS Y MODIFCAR ATRIBUTOS A LOS QUE SE USAN EN LA APP
 class Acceso:
@@ -21,7 +27,7 @@ class Acceso:
 # Función para cargar usuarios desde el archivo binario
 def cargar_usuarios():
     try:
-        with open('usuarios.ispc', 'rb') as archivo:
+        with open(directorioApp + '/usuarios.ispc', 'rb') as archivo:
             usuarios = pickle.load(archivo)
     except FileNotFoundError:
         usuarios = pd.DataFrame(columns=['username', 'password'])
@@ -30,7 +36,7 @@ def cargar_usuarios():
 # Función para registrar accesos
 def registrarAcceso(username):
     try:
-        with open('accesos.ispc', 'rb') as archivo:
+        with open(directorioApp + '/accesos.ispc', 'rb') as archivo:
             df_accesos = pd.DataFrame(pickle.load(archivo))
             
     # SI DA ERROR ABRIR EL ARCHIVO CREA UN DF VACIO PARA CONTINUAR CON LA CARGA
@@ -43,7 +49,7 @@ def registrarAcceso(username):
     df_accesos = df_accesos._append(nuevo_acceso, ignore_index=True)
     
     try:
-        with open('accesos.ispc', 'wb') as archivo:
+        with open(directorioApp + '/accesos.ispc', 'wb') as archivo:
             pickle.dump(df_accesos, archivo)
     
     except Exception as e:
@@ -52,18 +58,22 @@ def registrarAcceso(username):
 # Función para registrar intentos fallidos
 def registrar_intento_fallido(username, password):
     intento = f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Usuario: {username}, Clave: {password}\n"
-    with open('logs.txt', 'a') as file:
+    with open(directorioApp + '/logs.txt', 'a') as file:
         file.write(intento)
 
 # Función principal para el control de acceso
 def control_acceso(username, password):
     usuarios = cargar_usuarios()
     if not usuarios.empty and ((usuarios['username'] == username) & (usuarios['password'] == password)).any():
-        print("Bienvenido ha ingresado a la aplicación")
+        print('-' * 80)
+        print("BIENVENIDO HA INGRESADO A LA APLICACIÓN")
         registrarAcceso(username)
+        return True
     else:
-        print("Acceso denegado")
+        print('-' * 80)
+        print("ACCESO DENEGADO")
         registrar_intento_fallido(username, password)
+        return False
 
 def mostrarAccesos():
     try:
@@ -116,3 +126,46 @@ def menuDatosAccesos():
             break
         else:
             print("Opción inválida, intente nuevamente.")
+
+
+def menuIngresoSist():
+    print('')
+    print("-" * 25 ,"INGRESAR  AL SISTEMA CON LOS DATOS DE USUARIO","-" * 25)
+    print('')
+
+    # DEFINE BANDERA PARA EL CONTROL DE ACCESO
+    usuario_ok = False
+
+    user = input('Nombre de usuario: ')
+    pass_user = input('Contraseña: ')
+    
+    usuario_ok = control_acceso(user, pass_user)
+
+
+    # SI SE VALIDAN LOS DATOS CORRECTAMENTE
+    if usuario_ok == True:
+        while True:
+
+            # IMPRIME MENÚ DE OPCIONES POR CONSOLA
+            print('')
+            print("-" * 25 ,"BASE DE DATOS","-" * 25)
+            print("-" * 29 ,"Menú","-" * 30)
+            print('''   
+                        1) Ir a la Gestión de Base de datos\n
+                        2) Volver al menú anterior''')
+            
+            print("-" * 80)
+
+            option = (input("Ingrese una opción: "))
+            
+            print("-" * 70)
+            
+            # OPCIÓN 1 - 
+            if option == "1":
+                pass
+            
+            # OPCIÓN 2 - VUELVE AL MENÚ PRINCIPAL
+            elif option == "2":
+                break
+            else:
+                print("Opción inválida, intente nuevamente.")
