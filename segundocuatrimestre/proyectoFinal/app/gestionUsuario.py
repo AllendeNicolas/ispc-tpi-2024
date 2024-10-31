@@ -437,22 +437,17 @@ def buscarUsuario():
 
                 elif opcion == '3':
                     dato = validar_email('Ingresa el email:')
-                    usuario_cargado = df_usuarios[df_usuarios['email'] == dato]
-
-                    
-                    print(f'''Datos del usuario
-                                \n- ID: {usuario_cargado.to_numpy[0][0]}
-                                \n- Nombre de usuario: {usuario_cargado.to_numpy()[0][1]}
-                                \n- DNI: {usuario_cargado.to_numpy()[0][2]}
-                                \n- Contraseña: {usuario_cargado.to_numpy()[0][3]}
-                                \n- Email: {usuario_cargado.to_numpy()[0][4]}\n''')
-                    
-                    input('Presiona una tecla para continuar...')
+                    busqueda_secuencial(dato, 4)
                     break
                 
                 elif opcion == '4':
-                    ("-" * 30 ,"TODOS LOS USUARIOS REGISTRADOS","-" * 34)
-                    show_all_users()
+                    print("-" * 30 ,"MOSTRAR TODOS LOS USUARIOS REGISTRADOS","-" * 34)
+
+                    print("-" * 30 ,"\nUSUARIOS REGISTRADOS EN 'usuarios.ispc'","-" * 34)
+                    show_all_users('usuarios.ispc')
+
+                    print("-" * 30 ,"\nUSUARIOS REGISTRADOS EN 'usuariosOrdenadosPorUsername.ispc'","-" * 34)
+                    show_all_users('usuariosOrdenadosPorUsername.ispc')
 
                 elif opcion == '5':
                     break
@@ -468,15 +463,19 @@ def buscarUsuario():
 
 
 # FUNCION PARA MOSTRAR TODOS LOS USUARIOS
-def show_all_users():
+def show_all_users(nombreArchivo):
+    '''
+    Muestra el contenido de los archivos binarios de registros de usuarios
+    Recibe como parametro el nombre del archivo con tipo srt
+    '''
     try:
-        with open('usuarios.ispc', 'rb') as archivo:
+        with open(nombreArchivo, 'rb') as archivo:
             df_usuarios = pickle.load(archivo)
             print(df_usuarios)
         input('Presiona una tecla para continuar...')
         
     except:
-        print('El archivo usuarios.ispc no existe')
+        print(f'El archivo {nombreArchivo} no existe')
 
 
 
