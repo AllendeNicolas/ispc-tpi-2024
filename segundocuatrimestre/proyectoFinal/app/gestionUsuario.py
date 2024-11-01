@@ -2,14 +2,14 @@ import pickle
 import pandas as pd
 import re
 from operator import itemgetter
-import os.path as path
+import os
 from datetime import datetime
 from gestionAcceso import menuDatosAccesos
 
 
 # DEFINIMOS DIRECTORIO ACTUAL DE SCRIPT PRINCIPAL
-ubicacionMain = path.abspath(__file__)
-directorioApp, nombre = path.split(ubicacionMain)
+ubicacionMain = os.path.abspath(__file__)
+directorioApp, nombre = os.path.split(ubicacionMain)
 
 class Usuario:
     def __init__(self, username, dni, password, email):
@@ -241,6 +241,9 @@ def crearArchivoRegistroBusquedasBin(columna, registro):
     Crea los archivos de registros de  busquedas binarias: "/busquedasYordenamientos/buscandoUsuarioPorDNI-fecha.ispc" y 
     "/busquedasYordenamientos/buscandoUsuarioPorUsername-fecha.txt"recibiendo por parametro el nombre de la columna "dni" o "username"
     '''
+
+    os.makedirs(directorioApp + '/busquedasYordenamientos', exist_ok=True)  # Crear carpeta si no existe
+
 
     columnas = ('id', 'username', 'dni', 'password', 'email')
     fecha = datetime.now().strftime('%Y-%m-%d %Hh %Mm %Ss')
