@@ -7,6 +7,19 @@ VALUES (31007,
 'Buena presencia', 
 31007);
 
+INSERT INTO postulante (id_postulante, dni, nombre, apellido, fechanacimiento, curriculumvitae, id_residencia, id_nivelacademico, id_puestodeseado, id_formulario, id_usuario)
+VALUES (11,
+356368952,
+'Norma',
+'Castro',
+'2000-12-03',
+'cargado', 
+11,
+11,
+11,
+50005,
+6);
+
 UPDATE empresa 
 SET cantvacantes = 8 
 WHERE id_empresa = 10001;
