@@ -1,0 +1,5 @@
+Búsqueda Binaria por dni:
+Buscando el dni 1234345234 en el archivo /usuarios.ispc que contiene 9 usuarios.
+El dni a buscar es más GRANDE que el más grande de los registrados
+No se encontró usuario.
+--------------------------------------------------------------------------------
