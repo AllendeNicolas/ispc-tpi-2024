@@ -1,0 +1,9 @@
+Búsqueda Binaria por dni:
+Buscando el dni 76123098 en el archivo /usuarios.ispc que contiene 9 usuarios.
+Intento 1: dni del usuario de la posición 4 es 35267182.0
+por lo tanto se buscará en la subsecuencia de la derecha (dni más grandes) (posición 5 a 8).
+Intento 2: dni del usuario de la posición 6 es 40978123.0
+por lo tanto se buscará en la subsecuencia de la derecha (dni más grandes) (posición 7 a 8).
+Intento 3: dni del usuario de la posición 7 es 76123098.0
+por lo tanto se encontró el usuario en 3 intentos.
+--------------------------------------------------------------------------------
