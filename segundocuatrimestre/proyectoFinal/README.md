@@ -29,7 +29,7 @@
         <li><a href="#descripcionBDII">Base de Datos II</a></li>
         <li><a href="#descripcionejecucion"> Requisitos del Programa</a></li>
         <li><a href="#ejecucionaplicacion">Para ejecutar el Programa</a></li>
-        <li><a href="#Linkproyectofinal">Link Proyecto Integrador Final</a></li>
+        <li><a href="#linkproyectofinal">Link Proyecto Integrador Final</a></li>
      </ul>
      </li>
   </ul>
@@ -176,6 +176,6 @@ Carlos Direni - 28.117.281 - direnicarlos@gmail.com - https://github.com/Cdireni
 
 <hr/>
 
-<h3> id ='linkproyectofinal'><strong> Link PROYECTO INTEGRADOR FINAL</strong></h3>
+<h3> <strong> Link PROYECTO INTEGRADOR FINAL</strong></h3>
 <p align="center"><a href= https://github.com/AllendeNicolas/ispc-tpi-2024/tree/main/segundocuatrimestre/proyectoFinal><strong>Ver Proyecto Final Data Human´s»</strong></a></p>
 
