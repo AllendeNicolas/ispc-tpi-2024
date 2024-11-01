@@ -28,7 +28,8 @@
         <li><a href="#descripcionPI">Programación I</a></li>
         <li><a href="#descripcionBDII">Base de Datos II</a></li>
         <li><a href="#descripcionejecucion"> Requisitos del Programa</a></li>
-        <li><a href="#descripcioneaplicacion">Para ejecutar el Programa</a></li>
+        <li><a href="#ejecucionaplicacion">Para ejecutar el Programa</a></li>
+        <li><a href="#Linkproyectofinal">Link Proyecto Integrador Final</a></li>
      </ul>
      </li>
   </ul>
@@ -48,6 +49,9 @@ Bruno Lobo Souza - 95.690.709 - lobosouza.it@gmail.com - https://github.com/lobo
 Carlos Direni - 28.117.281 - direnicarlos@gmail.com - https://github.com/Cdireni</br>
 
 <hr/>
+
+<h4 id='presentación'><strong>PRESENTACIÓN DEL PROYECTO:</strong></h4> 
+
 
 <p>DATA HUMAN'S es una empresa dedicada al desarrollo y mantenimiento de Software y Bases de Datos, orientada a la organización y asistencia de los departamentos de Recursos Humanos (RRHH), de las empresas en general.</p>
 
@@ -72,32 +76,44 @@ Carlos Direni - 28.117.281 - direnicarlos@gmail.com - https://github.com/Cdireni
 <p>Contiene los archivos:</p>
 
 #### `main.py`
-
 <p>Este archivo contiene el punto de entrada de la aplicación y la función principal, que maneja el menú y las opciones del usuario.</p>
 
-#### `analisis_datos.py`
-
+#### `accesos.ispc.py`
 <p>Agregar descripcion de lo que contiene.</p>
+
+#### `analisis_datos.py`
+<p>.</p>
+
+#### `conexion_bd.py`(revisar si dejarla o no)
+<p>.</p>
 
 #### `gestionAcceso.py`
-
-<p>Acá se encuentra el módulo de acceso a las funciones referentes a la Gestión de Usuarios y contraseñas.</p>
+<p>.</p>
 
 #### `gestionUsuario.py`
-
-<p>Aquí se encuentra lo referido al módulo de ordenamiento, y las funciones específicas de la Gestión de Usuarios.</p>
-
-#### `ingreso_sistema.py`
-
-<p>Aquí se encuentra el módulo y funciones referidas al Backend y la Base de Datos del Proyecto.</p>
-
-#### `REGISTROS PLUVIALES`
-
 <p>Agregar descripcion de lo que contiene.</p>
 
+#### `ingreso_sistema.py`
+<p><p/>
 
+#### `logs.txt`
+<p><p/>
 
-<p> en el caso de registros_pluviales.py, la aplicación funciona correctamente, sólo debe cerrar las ventanas emergentes con los gráficos, para que muestre el siguiente gráfico con los registros.<p/>
+#### `registros_pluviales.py`
+<p><p/>
+
+#### `usuarios.ispc`
+<p><p/>
+
+#### `usuariosOrdenadosPorUsername.ispc`
+<p><p/>
+
+📂 datosanalizados
+<p><p/>
+
+📂 busquedasYordenamientos
+
+<p><p/>
 
 <hr/>
 
@@ -151,14 +167,15 @@ Carlos Direni - 28.117.281 - direnicarlos@gmail.com - https://github.com/Cdireni
 
 <hr/>
 
-<h4 id='descripcionaplicacion'><strong> Ejecución del programa</strong></h4>
+<h4 id='ejecucioncionaplicacion'><strong> Ejecución del programa</strong></h4>
 
 <p> Para Ejecutar la aplicación debemos seguir los siguientes pasos:</p>
 <p> 1) Ejecutar el script principal "main.py" que se encuentra en la carpeta "app".</p>
 <p> 2) Elegir una opción de las que ofrece el menú.</p>
 <p> 3) Ingresar los datos según corresponda.</p>
 
-<hr/> 
-<h3> Link PROYECTO INTEGRADOR FINAL</h3>
+<hr/>
+
+<h3> id ='linkproyectofinal'><strong> Link PROYECTO INTEGRADOR FINAL</strong></h3>
 <p align="center"><a href= https://github.com/AllendeNicolas/ispc-tpi-2024/tree/main/segundocuatrimestre/proyectoFinal><strong>Ver Proyecto Final Data Human´s»</strong></a></p>
 
