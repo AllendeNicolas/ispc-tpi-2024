@@ -26,7 +26,6 @@ class Usuario:
     def get_password(self):
         return self.__password
 
-
 # FUNCION DE ORDENAMIENTO CON METODO BURBUJA HECHA POR NOSOTROS
 def ordenar_burbuja():
     try:
@@ -59,7 +58,6 @@ def ordenar_burbuja():
         
         print('\nUSUARIOS ORDENADOS CON ÉXITO\n')
         input('\nPresiona ENTER para continuar...')
-
 
 # FUNCION DE ORDENAMIENTO USANDO LIBRERIA DE PYTHON
 def ordenar_con_sorted():
@@ -144,122 +142,6 @@ def busqueda_secuencial(dato, posColumna):
     #EN CASO DE QUE NO ENCUENTRE COINCIDENCIA O NO EXISTA EL ARCHIVO MUESTRA MSJ DE ERROR
     except:
         print('El archivo usuarios.ispc o el usuario no existe')
-
-"""# FUNCION PARA CREAR LOS REGISTROS DE BUSQUEDAS BINARIAS
-def crearArchivoRegistroBusquedasBin(columna, registro):
-    '''
-    Crea los archivos de registros de  busquedas binarias: "/busquedasYordenamientos/buscandoUsuarioPorDNI-fecha.ispc" y 
-    "/busquedasYordenamientos/buscandoUsuarioPorUsername-fecha.txt"recibiendo por parametro el nombre de la columna "dni" o "username"
-    '''
-
-    columnas = ('id', 'username', 'dni', 'password', 'email')
-    fecha = datetime.now().strftime('%Y-%m-%d %Hh %Mm %Ss')
-
-    try:
-        if columna == 'dni':
-            with open(directorioApp + f'/busquedasYordenamientos/buscandoUsuarioPorDNI-{fecha}.txt', 'a', encoding='utf-8') as archivo:
-                archivo.write(registro + '\n')
-
-        
-        elif columna == 'username':
-            with open(directorioApp + f'/busquedasYordenamientos/buscandoUsuarioPorUsername-{fecha}.txt', 'a', encoding='utf-8') as archivo:
-                archivo.write(registro + '\n')
-
-        else:
-            print('El nombre de la columna ingresada es incorrecto.')
-    except:
-        print('ERROR "crearArchivoRegistroBusquedasBin": el directorio donde se desea crear el archivo no existe.')
-        input('\nPresiona ENTER para continuar...')"""
-
-
-"""# FUNCION DE BUSQUEDA BINARIA DE USUARIOS
-def busqueda_binaria(dato, posColumna, nombreArchivo):
-    ''''
-    Realiza una busqueda binaria recibiendo por parametros el "dato" a comparar, 
-    la posición de la columna donde se va a busar dicho dato y el nombre del archivo binario anteponiendo "/"
-    Ejemplo "/nombreArchivo"
-    '''
-
-    try:
-        #BANDERA PARA CONTROLAR SI ENCONTRO EL REGISTRO
-        encontrado = False
-
-        # ABRE EL ARCHIVO BINARIO DE USUARIOS
-        with open(directorioApp + nombreArchivo, 'rb') as archivo:
-            df_usuarios = pd.DataFrame(pickle.load(archivo))
-            
-            # CONVIERTE EL DATAFRAME EN LISTA
-            usuarios_cargados_lista = df_usuarios.values.tolist()
-
-        inicio = 0
-        fin = len(usuarios_cargados_lista) - 1 
-        contadoIntentos = 0
-
-        crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], f'Búsqueda Binaria por {df_usuarios.columns[posColumna]}:')
-        crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], f'Buscando el {df_usuarios.columns[posColumna]} {dato} en el archivo {nombreArchivo} que contiene {len(usuarios_cargados_lista)} usuarios.')
-
-        while inicio <= fin:
-            contadoIntentos += 1
-            puntero = (inicio + fin) // 2
-
-            if dato < usuarios_cargados_lista[0][posColumna]:
-                crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], f'El {df_usuarios.columns[posColumna]} a buscar es más CHICO que el más chico de los registrados')
-                break
-
-            elif dato > usuarios_cargados_lista[-1][posColumna]:
-                crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], f'El {df_usuarios.columns[posColumna]} a buscar es más GRANDE que el más grande de los registrados')
-                break
-
-            crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], f'Intento {contadoIntentos}: {df_usuarios.columns[posColumna]} del usuario de la posición {puntero} es {usuarios_cargados_lista[puntero][posColumna]}')
-
-            if dato == usuarios_cargados_lista[puntero][posColumna]:
-                crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], f'por lo tanto se encontró el usuario en {contadoIntentos} intentos.')
-                crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], '-'*80)
-
-                usuario_cargado =  usuarios_cargados_lista[puntero]
-                # PONE BANDERA EN VERDADERO
-                encontrado = True
-                break
-
-            elif dato > usuarios_cargados_lista[puntero][posColumna]:
-
-                inicio = puntero + 1
-                crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], f'''por lo tanto se buscará en la subsecuencia de la derecha ({df_usuarios.columns[posColumna]} más grandes) (posición {inicio} a {fin}).''')
-
-
-            else:
-                fin = puntero - 1
-                
-                # USAR ESTA INFORMACION PARA REGISTRAR EN ARCHIVO DE REGISTROS ***************************************************************************************************
-                crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], f'por lo tanto se buscará en la subsecuencia de la IZQUIERDA ({df_usuarios.columns[posColumna]} más chicos) (posición {inicio} a {fin}).')
-
-
-        
-        if encontrado:
-            print(f'''Datos del usuario
-                    \n- ID: {usuario_cargado[0]}
-                    \n- Nombre de usuario: {usuario_cargado[1]}
-                    \n- DNI: {usuario_cargado[2]}
-                    \n- Contraseña: {usuario_cargado[3]}
-                    \n- Email: {usuario_cargado[4]}\n''')
-        
-        else:
-                # IMPRIME SI NO ENCUENTRA REGISTRO
-                print('No se encontró usuario.')
-                crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], 'No se encontró usuario.')
-                crearArchivoRegistroBusquedasBin(df_usuarios.columns[posColumna], '-'*80)
-            
-        print("-" * 70)
-        print('SE REALIZO MEDIANTE BUSQUEDA BINARIA')
-        print("-" * 70)
-            
-        input('\nPresiona ENTER para continuar...')
-                                       
-    #EN CASO DE QUE NO ENCUENTRE COINCIDENCIA O NO EXISTA EL ARCHIVO MUESTRA MSJ DE ERROR
-    except:
-        print('El archivo usuarios.ispc o el usuario no existe')"""
-
-
 
 # FUNCION DE BUSQUEDA BINARIA DE USUARIOS
 def busqueda_binaria(dato, posColumna, nombreArchivo):
@@ -352,10 +234,6 @@ def busqueda_binaria(dato, posColumna, nombreArchivo):
     except:
         print('El archivo usuarios.ispc o el usuario no existe')
 
-
-
-
-
 # FUNCION PARA CREAR LOS REGISTROS DE BUSQUEDAS BINARIAS
 def crearArchivoRegistroBusquedasBin(columna, registro):
     '''
@@ -385,16 +263,6 @@ def crearArchivoRegistroBusquedasBin(columna, registro):
     except:
         print('ERROR "crearArchivoRegistroBusquedasBin": el directorio donde se desea crear el archivo no existe.')
         input('\nPresiona ENTER para continuar...')
-
-
-
-
-
-
-
-
-
-
 
 # FUNCION PARA VALIDADAR EMAIL
 def validar_email(msj):
@@ -593,7 +461,6 @@ def eliminarUsuarioConMenu():
     except:
         print('El archivo usuarios.ispc o el usuario no existe')
     
-
 # FUNCION PARA BUSCAR USUARIO
 def buscarUsuario():
     
@@ -660,7 +527,6 @@ def buscarUsuario():
     except:
         print('El archivo usuarios.ispc o el usuario no existe')
     
-
 
 # FUNCION PARA MOSTRAR TODOS LOS USUARIOS
 def show_all_users(nombreArchivo):
