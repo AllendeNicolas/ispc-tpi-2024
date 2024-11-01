@@ -167,7 +167,7 @@ Carlos Direni - 28.117.281 - direnicarlos@gmail.com - https://github.com/Cdireni
 
 <hr/>
 
-<h4 id='ejecucioncionaplicacion'><strong> Ejecución del programa</strong></h4>
+<h4 id='ejecucionaplicacion'><strong> Ejecución del programa</strong></h4>
 
 <p> Para Ejecutar la aplicación debemos seguir los siguientes pasos:</p>
 <p> 1) Ejecutar el script principal "main.py" que se encuentra en la carpeta "app".</p>
