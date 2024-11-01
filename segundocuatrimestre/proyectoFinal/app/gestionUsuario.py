@@ -4,6 +4,7 @@ import re
 from operator import itemgetter
 import os.path as path
 from datetime import datetime
+from gestionAcceso import menuDatosAccesos
 
 
 # DEFINIMOS DIRECTORIO ACTUAL DE SCRIPT PRINCIPAL
@@ -673,6 +674,46 @@ def menuOrdenarBuscarUsuarios():
         else:
             print("Opción inválida, intente nuevamente.")
 
+
+def menuUsuariosAccesos():
+    '''
+    Muestra el menu de opciones par manipular datos de accesos y usuarios
+    '''
+    
+    while True:
+
+        # IMPRIME MENÚ DE OPCIONES POR CONSOLA
+        print('')
+        print("-" * 25 ,"USUARIOS Y ACCESOS DE LA APP","-" * 25)
+        print('''   
+                    1) Acceder al CRUD de los Usuarios en POO\n
+                    2) Mostrar los datos de Acceso\n
+                    3) Ordenamiento y Búsqueda de Usuarios\n
+                    4) Volver al Menú principal\n''')
+        
+        print("-" * 80)
+
+        option = (input("Ingrese una opción: "))
+        
+        print("-" * 80)
+        
+        # OPCIÓN 1 - CRUD USUARIOS POO
+        if option == "1":
+            menuCrudUsuarios()
+    
+        # OPCIÓN 2 - DATOS DE ACCESO
+        elif option == "2":
+            menuDatosAccesos()
+        
+        # OPCIÓN 3 - ORDENAMIENTO Y BUSQUEDA DE USUSARIOS
+        elif option == "3":
+            menuOrdenarBuscarUsuarios()
+        
+        # OPCIÓN 4 - VUELVE AL MENÚ PRINCIPAL
+        elif option == "4":
+            break
+        else:
+            print("Opción inválida, intente nuevamente.")
 
 
 #menuRegistrarUsuario()
