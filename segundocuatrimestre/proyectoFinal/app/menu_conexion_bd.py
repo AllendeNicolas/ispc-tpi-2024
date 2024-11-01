@@ -162,6 +162,3 @@ def gestionar_base_datos_simulado():
 
         else:
             print("Opción no válida, por favor intenta de nuevo.")
-
-if __name__ == "__main__":
-    conectar_base_datos()

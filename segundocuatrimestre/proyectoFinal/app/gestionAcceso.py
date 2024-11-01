@@ -133,6 +133,7 @@ def menuDatosAccesos():
 
 
 def menuIngresoSist():
+    from menu_conexion_bd import conectar_base_datos
     print('')
     print("-" * 25 ,"INGRESAR  AL SISTEMA CON LOS DATOS DE USUARIO","-" * 25)
     print('')
@@ -148,29 +149,4 @@ def menuIngresoSist():
 
     # SI SE VALIDAN LOS DATOS CORRECTAMENTE
     if usuario_ok == True:
-        while True:
-
-            # IMPRIME MENÚ DE OPCIONES POR CONSOLA
-            print('')
-            print("-" * 25 ,"BASE DE DATOS","-" * 25)
-            print("-" * 29 ,"Menú","-" * 30)
-            print('''   
-                        1) Ir a la Gestión de Base de datos\n
-                        2) Volver al menú anterior''')
-            
-            print("-" * 80)
-
-            option = (input("Ingrese una opción: "))
-            
-            print("-" * 70)
-            
-            # OPCIÓN 1 - 
-            if option == "1":
-                #menuBaseDatos()
-                pass
-            
-            # OPCIÓN 2 - VUELVE AL MENÚ PRINCIPAL
-            elif option == "2":
-                break
-            else:
-                print("Opción inválida, intente nuevamente.")
+        conectar_base_datos()
