@@ -10,6 +10,7 @@ os.makedirs(path, exist_ok=True)  # Crear carpeta si no existe
 
 # Función para generar y guardar registros pluviales en un CSV si no existe
 def generar_registro_pluvial(year):
+    import random
     filename = os.path.join(path, f'registroPluvial{year}.csv')
     
     # Verificar si el archivo ya existe
@@ -19,12 +20,12 @@ def generar_registro_pluvial(year):
     else:
         print("Generando registros pluviales aleatorios para el año", year)
         np.random.seed(42)  # Consistencia en datos aleatorios
-        precipitaciones = np.round(np.random.rand(365) * 100, 2).reshape(31, 12)
+        precipitaciones = np.round(np.random.rand(372) * 100, 2).reshape(31, 12)
         
         # Crear DataFrame de Pandas con nombres de columnas (meses)
         columnas = [calendar.month_name[m] for m in range(1, 13)]
         df = pd.DataFrame(precipitaciones, columns=columnas)
-        
+
         # Guardar el DataFrame como CSV
         df.to_csv(filename, index=False)
         print(f"Registro pluvial guardado en '{filename}'.")
@@ -32,6 +33,7 @@ def generar_registro_pluvial(year):
 
 # Función para mostrar estadísticas anuales
 def mostrar_estadisticas_anuales(df):
+    print('-' * 80)
     print("Estadísticas anuales de precipitación:")
     print("Máximo anual:", df.max().max())
     print("Mínimo anual:", df.min().min())
@@ -95,7 +97,8 @@ def graficar_datos(df, mes=None):
 def menuRegistrosPluviales():
 
     print('')
-    print("-" * 25 ,"ANÁLISIS DE DATOS","-" * 25)
+    print("-" * 30 ,"ANÁLISIS DE DATOS","-" * 30)
+    print("-" * 30 ,"REGISTROS PLUVIALES","-" * 30)
     print('')
 
     year = int(input('Ingresa el año que desea analizar (1985-2024): '))
@@ -107,12 +110,13 @@ def menuRegistrosPluviales():
     df = generar_registro_pluvial(year)
 
     while True:
-        print("-" * 25 ,"REGISTROS PLUVIALES","-" * 25)
-        print("\n--- Menú ---")
+        print('')
+        print("-" * 30 ,"REGISTROS PLUVIALES","-" * 30)
+        print("-" * 30 , "Menú", "-" * 30)
         print("1) Mostrar estadísticas anuales de precipitación")
-        print("2) Mostrar gráficos de registros pluviales anuales")
+        print("2) Generar gráficos de registros pluviales anuales")
         print("3) Analizar un mes específico")
-        print("4) Salir")
+        print("4) Volver al menú anterior")
         
         opcion = input("Seleccione una opción: ")
 
@@ -134,7 +138,3 @@ def menuRegistrosPluviales():
             break
         else:
             print("Opción no válida. Intente de nuevo.")
-
-## Llamada a la función principal
-#if __name__ == "__main__":
-#    registros_pluviales()
