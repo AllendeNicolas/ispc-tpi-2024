@@ -93,6 +93,8 @@ def gestionar_base_datos(conexion, cursor):
 # Función del menú principal
 def conectar_base_datos():
     print("CONEXIÓN Y TESTEO DE LA BASE DE DATOS\n")
+
+    print('Ingresa los datos de tu servidor')
     usuario = input('User:')
     contrasena = input('Password:')
 
