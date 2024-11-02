@@ -24,6 +24,7 @@
     <li><a href="#programaciónI">Innovación y gestión de datos</a>
      <ul>
         <li><a href="#presentación">Presentación del proyecto</a></li>
+        <li><a href="#descripcionreadme"> A cerca de esta evidencia</a></li>
         <li><a href="#descripcion-archivos">Descripción de carpetas y archivos</a>
         <li><a href="#descripcionPI">Programación I</a></li>
         <li><a href="#descripcionBDII">Base de Datos II</a></li>
@@ -65,55 +66,64 @@ Carlos Direni - 28.117.281 - direnicarlos@gmail.com - https://github.com/Cdireni
 
 <hr/> 
 
+<h4 id='descripcionreadme'><strong> A cerca de este Proyecto Integrador:</strong></h4>
+
+<p>Dada la complejidad de los nuevos contenidos en la materia de Programación I, en cuanto a programación orientada a objetos con lenguaje Python, y teniendo en cuenta que la gran mayoría de nuestros integrantes, no hemos tenido contacto anteriormente con este tipo de contenido. Para esta entrega, realizamos una división de tareas más ordenada, analizamos las nuevas tareas a desarrollar, diseñamos una guía de tareas a realizar, en base a lo que ya teníamos desarrollado con anterioridad, y dividimos el proyecto en sub problemas, más pequeños. A cada integrante se le asignó una pequeña porción  de la consigna que debió desarrollar a criterio propio, y con sus propios recursos, partiendo de la base de la Evidencia 3 realizada, en pos de cumplir las consignas solicitadas en Python. 
+La complejidad del proyecto estuvo presente en todo momento, por una cuestión de que cada integrante, trabajó de forma independiente, casi sin poder consultar a los demás integrantes, por no poder coincidir en cuanto a horarios.
+El otro inconveniente, fue ponernos de acuerdo, con los nombres de las funciones o módulos que cada integrante desarrolló, y que hicieron difícil la puesta a punto en general del proyecto. Por tener maneras de resolver y de codear, totalmente diferentes, algunos por la falta de experiencia y otros por tener conocimientos en el uso de Python. 
+La integración del Proyecto, en tanto Base de Datos II y Programación I, fue realizada por uno de nuestros compañeros y líder del equipo, ya que fue el único que logró conectar la Base de Datos Actualizada, iconveniente que no pudimos resolver, hasta el momento de entrega del proyecto. El equipo está agradecido porque fue un pilar importante en el logro de esta entrega.
+Lamenteablemnte sufrimos una baja durante el desarrollo del mismo, pero esta integrante colaboró con nostros hasta el momento final de la presente entrega, el equipo agradece su aporte en el Proyecto.</p>
+
+<hr/> 
+
 <h3 align="center" id="programaciónI">Innovación y gestión de datos</h3>
 
 <h4 id='descripcionPI'><strong>PROGRAMACION I</strong></h4>
 
 <hr/>
 
-<h4 id="aplicacion"> 📂 Carpeta <code>app</code></h4>
+<h4 id="aplicacion"> 📂 Carpeta <code>aplicación</code></h4>
 
 <p>Contiene los archivos:</p>
 
 #### `main.py`
 <p>Este archivo contiene el punto de entrada de la aplicación y la función principal, que maneja el menú y las opciones del usuario.</p>
 
-#### `accesos.ispc.py`
-<p>Agregar descripcion de lo que contiene.</p>
+#### `accesos.ispc`
+<p>Este archivo, contiene lo relacionado a los accesos ISPC.</p>
 
 #### `analisis_datos.py`
-<p>.</p>
-
-#### `conexion_bd.py`(revisar si dejarla o no)
-<p>.</p>
+<p> Este archivo contiene el menú, de análisis de datos Pluviales.</p>
 
 #### `gestionAcceso.py`
-<p>.</p>
+<p>Contiene las funciones principales, refereridas a la gestión de los Accesos.</p>
 
 #### `gestionUsuario.py`
-<p>Agregar descripcion de lo que contiene.</p>
+<p>Contiene ordenamientos y transformaciones a Dataframe, referidas a la gestión de Usuarios.</p>
 
 #### `ingreso_sistema.py`
-<p><p/>
+<p>Contiene el menú de ingreso al Sistema, Bandera para control de acceso y Validacione.s<p/>
 
 #### `logs.txt`
-<p><p/>
+<p> Contiene lo referido a los Registros de Ingresos de los Usuarios.<p/>
+
+#### `menu_conexion_bd.py`
+<p> Contiene el menú de Ingreso a la Gestión de Base de Datos.</p>
 
 #### `registros_pluviales.py`
-<p><p/>
+<p>Contiene el programa referido a los Registros Pluviales.<p/>
 
 #### `usuarios.ispc`
-<p><p/>
+<p>Documento que contiene lo referido a los usuarios ISPC y demás acciones.<p/>
 
 #### `usuariosOrdenadosPorUsername.ispc`
-<p><p/>
+<p>Documento de orden a los Usuarios ISPC, por su Username.<p/>
 
 📂 datosanalizados
-<p><p/>
+<p>Contiene documentos de Datos de Registros y Gráficos Pluviales.<p/>
 
 📂 busquedasYordenamientos
-
-<p><p/>
+<p>Busqueda y ordenamientos de Usuario por DNI<p/>
 
 <hr/>
 
