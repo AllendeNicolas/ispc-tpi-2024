@@ -69,9 +69,13 @@ Carlos Direni - 28.117.281 - direnicarlos@gmail.com - https://github.com/Cdireni
 <h4 id='descripcionreadme'><strong> A cerca de este Proyecto Integrador:</strong></h4>
 
 <p>Dada la complejidad de los nuevos contenidos en la materia de Programación I, en cuanto a programación orientada a objetos con lenguaje Python, y teniendo en cuenta que la gran mayoría de nuestros integrantes, no hemos tenido contacto anteriormente con este tipo de contenido. Para esta entrega, realizamos una división de tareas más ordenada, analizamos las nuevas tareas a desarrollar, diseñamos una guía de tareas a realizar, en base a lo que ya teníamos desarrollado con anterioridad, y dividimos el proyecto en sub problemas, más pequeños. A cada integrante se le asignó una pequeña porción  de la consigna que debió desarrollar a criterio propio, y con sus propios recursos, partiendo de la base de la Evidencia 3 realizada, en pos de cumplir las consignas solicitadas en Python. 
+ 
 La complejidad del proyecto estuvo presente en todo momento, por una cuestión de que cada integrante, trabajó de forma independiente, casi sin poder consultar a los demás integrantes, por no poder coincidir en cuanto a horarios.
-El otro inconveniente, fue ponernos de acuerdo, con los nombres de las funciones o módulos que cada integrante desarrolló, y que hicieron difícil la puesta a punto en general del proyecto. Por tener maneras de resolver y de codear, totalmente diferentes, algunos por la falta de experiencia y otros por tener conocimientos en el uso de Python. 
+ 
+El otro inconveniente, fue ponernos de acuerdo, con los nombres de las funciones o módulos que cada integrante desarrolló, y que hicieron difícil la puesta a punto en general del proyecto. Por tener maneras de resolver y de codear, totalmente diferentes, algunos por la falta de experiencia y otros por tener conocimientos en el uso de Python.
+ 
 La integración del Proyecto, en tanto Base de Datos II y Programación I, fue realizada por uno de nuestros compañeros y líder del equipo, ya que fue el único que logró conectar la Base de Datos Actualizada, iconveniente que no pudimos resolver, hasta el momento de entrega del proyecto. El equipo está agradecido porque fue un pilar importante en el logro de esta entrega.
+
 Lamenteablemnte sufrimos una baja durante el desarrollo del mismo, pero esta integrante colaboró con nostros hasta el momento final de la presente entrega, el equipo agradece su aporte en el Proyecto.</p>
 
 <hr/> 
